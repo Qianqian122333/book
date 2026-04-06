@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
+import VideoWithFallback from "@/components/VideoWithFallback";
 
 const experiences = [
   {
@@ -117,12 +118,11 @@ export default function Home() {
           <div className="mt-16 space-y-20">
             {/* KaleidoColorLab — full row */}
             <Link href={projects[0].href} className="group block">
-              <div className="aspect-[2/1] w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
-                <Image
-                  src="/home/project-1.webp"
+              <div className="relative aspect-2/1 w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+                <VideoWithFallback
+                  videoSrc="/home/project1.mp4"
+                  fallbackSrc="/home/project1.webp"
                   alt="KaleidoColorLab"
-                  width={1920}
-                  height={960}
                   className="h-full w-full object-cover"
                 />
               </div>
