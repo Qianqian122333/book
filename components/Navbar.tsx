@@ -43,7 +43,9 @@ export default function Navbar() {
                 <NavigationMenuLink
                   href="/home"
                   className={`inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-                    isActive("/home") ? "bg-[#F8F4EF]" : "hover:bg-[#F8F4EF]"
+                    isActive("/home")
+                      ? "bg-black text-white"
+                      : "hover:bg-black hover:text-white"
                   }`}
                 >
                   Home
@@ -52,8 +54,10 @@ export default function Navbar() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger
-                  className={`text-sm font-medium ${
-                    isProjectsActive ? "bg-[#F8F4EF]" : ""
+                  className={`text-sm font-medium transition-colors ${
+                    isProjectsActive
+                      ? "bg-black text-white"
+                      : "hover:bg-black hover:text-white"
                   }`}
                 >
                   Projects
@@ -66,8 +70,8 @@ export default function Navbar() {
                           href={p.href}
                           className={`block rounded-md px-3 py-2 text-sm transition-colors ${
                             isActive(p.href)
-                              ? "bg-[#F8F4EF]"
-                              : "hover:bg-[#F8F4EF]"
+                              ? "bg-black text-white"
+                              : "hover:bg-black hover:text-white"
                           }`}
                         >
                           {p.name}
@@ -82,7 +86,9 @@ export default function Navbar() {
                 <NavigationMenuLink
                   href="/contact"
                   className={`inline-flex h-9 items-center justify-center rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-                    isActive("/contact") ? "bg-[#F8F4EF]" : "hover:bg-[#F8F4EF]"
+                    isActive("/contact")
+                      ? "bg-black text-white"
+                      : "hover:bg-black hover:text-white"
                   }`}
                 >
                   Contact
@@ -115,7 +121,9 @@ export default function Navbar() {
                 href="/home"
                 onClick={() => setMobileOpen(false)}
                 className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/home") ? "bg-[#F8F4EF]" : "hover:bg-[#F8F4EF]"
+                  isActive("/home")
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
                 }`}
               >
                 Home
@@ -125,7 +133,9 @@ export default function Navbar() {
               <button
                 onClick={() => setProjectsOpen(!projectsOpen)}
                 className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  isProjectsActive ? "bg-[#F8F4EF]" : "hover:bg-[#F8F4EF]"
+                  isProjectsActive
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
                 }`}
               >
                 Projects
@@ -142,10 +152,10 @@ export default function Navbar() {
                       <Link
                         href={p.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`block rounded-md px-3 py-2 text-sm text-zinc-600 transition-colors ${
+                        className={`block rounded-md px-3 py-2 text-sm transition-colors ${
                           isActive(p.href)
-                            ? "bg-[#F8F4EF]"
-                            : "hover:bg-[#F8F4EF]"
+                            ? "bg-black text-white"
+                            : "hover:bg-black hover:text-white"
                         }`}
                       >
                         {p.name}
@@ -160,7 +170,9 @@ export default function Navbar() {
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
                 className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/contact") ? "bg-[#F8F4EF]" : "hover:bg-[#F8F4EF]"
+                  isActive("/contact")
+                    ? "bg-black text-white"
+                    : "hover:bg-black hover:text-white"
                 }`}
               >
                 Contact

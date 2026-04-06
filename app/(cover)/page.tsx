@@ -71,10 +71,10 @@ export default function CoverPage() {
 
     // 3D book-opening effect: rotate the book cover like opening a book
     tl.to(bookWrapperRef.current, {
-      rotateY: -85,
+      rotateY: -180,
       scale: 1.05,
-      duration: 0.8,
-      ease: "power2.in",
+      duration: 1.8,
+      ease: "power2.inOut",
     });
 
     // Fade out the whole page
@@ -82,10 +82,10 @@ export default function CoverPage() {
       containerRef.current,
       {
         opacity: 0,
-        duration: 0.4,
+        duration: 0.5,
         ease: "power2.in",
       },
-      "-=0.3",
+      "-=0.4",
     );
   };
 

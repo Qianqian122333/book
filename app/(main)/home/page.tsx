@@ -42,7 +42,7 @@ const experiences = [
 
 const projects = [
   {
-    name: "KaleidoColorLab",
+    name: "Kaleido ColorLab",
     desc: "UX Design & Full-stack Development",
     href: "/projects/kaleidocolorlab",
   },

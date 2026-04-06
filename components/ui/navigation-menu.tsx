@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all outline-none hover:bg-[#F8F4EF] focus:bg-[#F8F4EF] focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-[#F8F4EF]/50 data-popup-open:hover:bg-[#F8F4EF] data-open:bg-[#F8F4EF]/50 data-open:hover:bg-[#F8F4EF] data-open:focus:bg-[#F8F4EF]",
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all outline-none hover:bg-black hover:text-white focus:bg-black focus:text-white focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-black/80 data-popup-open:text-white data-popup-open:hover:bg-black data-open:bg-black/80 data-open:text-white data-open:hover:bg-black data-open:focus:bg-black",
 );
 
 function NavigationMenuTrigger({
@@ -128,7 +128,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-2 rounded-lg p-2 text-sm transition-all outline-none hover:bg-[#F8F4EF] focus:bg-[#F8F4EF] focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md data-active:bg-[#F8F4EF]/50 data-active:hover:bg-[#F8F4EF] data-active:focus:bg-[#F8F4EF] [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 rounded-lg p-2 text-sm transition-all outline-none hover:bg-black hover:text-white focus:bg-black focus:text-white focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 in-data-[slot=navigation-menu-content]:rounded-md data-active:bg-black/80 data-active:text-white data-active:hover:bg-black data-active:focus:bg-black [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
