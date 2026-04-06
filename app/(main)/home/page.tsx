@@ -117,12 +117,12 @@ export default function Home() {
           <div className="mt-16 space-y-20">
             {/* KaleidoColorLab — full row */}
             <Link href={projects[0].href} className="group block">
-              <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+              <div className="aspect-[2/1] w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
                 <Image
-                  src="/kaleidocolorlab/colorlab-heropic.webp"
+                  src="/home/project-1.webp"
                   alt="KaleidoColorLab"
                   width={1920}
-                  height={1920}
+                  height={960}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -138,23 +138,37 @@ export default function Home() {
 
             {/* Aventus Airbrush & Gaahleri Community — two in a row */}
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-              {projects.slice(1).map((proj) => (
-                <Link key={proj.name} href={proj.href} className="group block">
-                  <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                    <div className="flex h-full w-full items-center justify-center text-[10px] text-zinc-400 uppercase tracking-widest">
-                      [{proj.name}]
+              {projects.slice(1).map((proj) => {
+                const imgMap: Record<string, string> = {
+                  "Aventus Airbrush": "/home/project2.webp",
+                  "Gaahleri Community": "/home/project3.webp",
+                };
+                return (
+                  <Link
+                    key={proj.name}
+                    href={proj.href}
+                    className="group block"
+                  >
+                    <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <Image
+                        src={imgMap[proj.name] ?? ""}
+                        alt={proj.name}
+                        width={960}
+                        height={960}
+                        className="h-full w-full object-cover"
+                      />
                     </div>
-                  </div>
-                  <div className="mt-4 space-y-1">
-                    <h4 className="text-xs font-bold uppercase tracking-tight">
-                      {proj.name}
-                    </h4>
-                    <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                      {proj.desc}
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                    <div className="mt-4 space-y-1">
+                      <h4 className="text-xs font-bold uppercase tracking-tight">
+                        {proj.name}
+                      </h4>
+                      <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
+                        {proj.desc}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
