@@ -16,34 +16,33 @@ export default function VideoWithFallback({
   alt,
   className,
 }: VideoWithFallbackProps) {
-  const [useFallback, setUseFallback] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
 
-  if (useFallback) {
-    return (
+  return (
+    <>
+      {/* Fallback image — always shown; fades out once video is playing */}
       <Image
         src={fallbackSrc}
         alt={alt}
         fill
-        className={className}
+        className={`${className ?? ""} transition-opacity duration-700 ${videoReady && !videoFailed ? "opacity-0" : "opacity-100"}`}
         style={{ objectFit: "cover" }}
       />
-    );
-  }
-
-  return (
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      className={className}
-      onError={() => setUseFallback(true)}
-    >
-      <source
-        src={videoSrc}
-        type="video/mp4"
-        onError={() => setUseFallback(true)}
-      />
-    </video>
+      {/* Video — invisible until ready, then fades in over the image */}
+      {!videoFailed && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+          onCanPlay={() => setVideoReady(true)}
+          onError={() => setVideoFailed(true)}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
+    </>
   );
 }

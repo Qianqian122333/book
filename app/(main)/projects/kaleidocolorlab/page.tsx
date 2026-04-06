@@ -570,7 +570,7 @@ export default function KaleidoColorLabPage() {
           </p>
 
           {/* Role / Duration / Collaboration — 3 columns */}
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 mb-16 text-center">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 mb-16 text-center">
             <div className="space-y-1">
               <div className="flex justify-center mb-3">
                 <User className="w-7 h-7 text-black" />
@@ -1697,7 +1697,7 @@ export default function KaleidoColorLabPage() {
           </div>
 
           {/* Stats grid */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 mb-12">
             {[
               { stat: "4,000+", label: "Participants", Icon: Users },
               {

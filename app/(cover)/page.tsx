@@ -44,9 +44,8 @@ export default function CoverPage() {
           ease: "power3.out",
           delay: 0.1,
           onComplete: () => {
-            // Shimmer pulse to hint the book is clickable
+            // Subtle scale pulse to hint the book is clickable
             gsap.to(imageRef.current, {
-              boxShadow: "0 0 30px rgba(0,0,0,0.25), 0 0 60px rgba(0,0,0,0.1)",
               scale: 1.02,
               duration: 0.8,
               repeat: -1,
@@ -128,7 +127,7 @@ export default function CoverPage() {
             alt="Qianqian's Book"
             width={400}
             height={560}
-            className="rounded-lg shadow-2xl max-w-[80vw] h-auto transition-transform duration-300 hover:rotate-2"
+            className="rounded-lg max-w-[80vw] h-auto transition-transform duration-300 hover:rotate-2"
             priority
           />
         </div>
