@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 
 const experiences = [
@@ -107,48 +108,56 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="bg-white px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 mb-24">
-          <div />
-          <h2 className="text-xl font-bold tracking-widest sm:text-2xl text-left">
+      <section id="projects" className="bg-white px-6 py-24 md:px-12 lg:px-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
+          <h2 className="text-xl font-bold tracking-widest sm:text-2xl">
             PROJECTS
           </h2>
-        </div>
 
-        <div className="relative mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-x-12 md:gap-y-0">
-            {projects.map((project, i) => (
-              <Link
-                key={project.href}
-                href={project.href}
-                className={`flex flex-col group ${
-                  i === 0
-                    ? "md:-translate-y-16"
-                    : i === 1
-                      ? "md:translate-y-32"
-                      : "md:translate-y-0"
-                }`}
-              >
-                <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                  <div className="flex h-full w-full items-center justify-center text-[10px] text-zinc-400 uppercase tracking-widest">
-                    [{project.name}]
+          <div className="mt-16 space-y-20">
+            {/* KaleidoColorLab — full row */}
+            <Link href={projects[0].href} className="group block">
+              <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+                <Image
+                  src="/kaleidocolorlab/colorlab-heropic.webp"
+                  alt="KaleidoColorLab"
+                  width={1920}
+                  height={1920}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="mt-5 space-y-1">
+                <h4 className="text-xs font-bold uppercase tracking-tight">
+                  {projects[0].name}
+                </h4>
+                <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
+                  {projects[0].desc}
+                </p>
+              </div>
+            </Link>
+
+            {/* Aventus Airbrush & Gaahleri Community — two in a row */}
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+              {projects.slice(1).map((proj) => (
+                <Link key={proj.name} href={proj.href} className="group block">
+                  <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                    <div className="flex h-full w-full items-center justify-center text-[10px] text-zinc-400 uppercase tracking-widest">
+                      [{proj.name}]
+                    </div>
                   </div>
-                </div>
-                <div className="mt-4 space-y-1">
-                  <h4 className="text-xs font-bold uppercase tracking-tight">
-                    {project.name}
-                  </h4>
-                  <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                    {project.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                  <div className="mt-4 space-y-1">
+                    <h4 className="text-xs font-bold uppercase tracking-tight">
+                      {proj.name}
+                    </h4>
+                    <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
+                      {proj.desc}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Extra space for the shifted Project 2 */}
-        <div className="h-32 md:h-48"></div>
       </section>
     </div>
   );

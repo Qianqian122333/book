@@ -8,28 +8,85 @@ import { Volume2, VolumeX } from "lucide-react";
 
 export default function CoverPage() {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bookWrapperRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [isQianqianPlaying, setIsQianqianPlaying] = useState(false);
+  const [isOpening, setIsOpening] = useState(false);
   const qianqianAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Slow pulsing glow on image only
-      gsap.to(imageRef.current, {
-        opacity: 0.7,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    });
+      // Text: start off-screen bottom-right, glide to center
+      gsap.fromTo(
+        textRef.current,
+        { x: 120, y: 80, opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power3.out",
+          delay: 0.2,
+        },
+      );
+
+      // Book cover: start off-screen top-left, glide to center, then shimmer
+      gsap.fromTo(
+        imageRef.current,
+        { x: -120, y: -80, opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 1.4,
+          ease: "power3.out",
+          delay: 0.1,
+          onComplete: () => {
+            // Shimmer pulse to hint the book is clickable
+            gsap.to(imageRef.current, {
+              boxShadow: "0 0 30px rgba(0,0,0,0.25), 0 0 60px rgba(0,0,0,0.1)",
+              scale: 1.02,
+              duration: 0.8,
+              repeat: -1,
+              yoyo: true,
+              ease: "sine.inOut",
+            });
+          },
+        },
+      );
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   const handleEnter = () => {
-    router.push("/home");
+    if (isOpening) return;
+    setIsOpening(true);
+
+    const tl = gsap.timeline({
+      onComplete: () => router.push("/home"),
+    });
+
+    // 3D book-opening effect: rotate the book cover like opening a book
+    tl.to(bookWrapperRef.current, {
+      rotateY: -85,
+      scale: 1.05,
+      duration: 0.8,
+      ease: "power2.in",
+    });
+
+    // Fade out the whole page
+    tl.to(
+      containerRef.current,
+      {
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.in",
+      },
+      "-=0.3",
+    );
   };
 
   const toggleQianqian = (e: React.MouseEvent) => {
@@ -51,22 +108,36 @@ export default function CoverPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
+    <div
+      ref={containerRef}
+      className="min-h-screen bg-white flex flex-col items-center justify-center px-6"
+      style={{ perspective: "1200px" }}
+    >
       <div
-        ref={imageRef}
+        ref={bookWrapperRef}
         onClick={handleEnter}
-        className="cursor-pointer transition-transform duration-300 hover:rotate-2"
+        className="cursor-pointer"
+        style={{
+          transformStyle: "preserve-3d",
+          transformOrigin: "left center",
+        }}
       >
-        <Image
-          src="/home/bookcover.webp"
-          alt="Qianqian's Book"
-          width={400}
-          height={560}
-          className="rounded-lg shadow-2xl max-w-[80vw] h-auto"
-          priority
-        />
+        <div ref={imageRef} style={{ opacity: 0 }}>
+          <Image
+            src="/home/bookcover.webp"
+            alt="Qianqian's Book"
+            width={400}
+            height={560}
+            className="rounded-lg shadow-2xl max-w-[80vw] h-auto transition-transform duration-300 hover:rotate-2"
+            priority
+          />
+        </div>
       </div>
-      <div ref={textRef} className="mt-14 text-center space-y-5">
+      <div
+        ref={textRef}
+        className="mt-14 text-center space-y-5"
+        style={{ opacity: 0 }}
+      >
         <p className="text-xl sm:text-2xl font-medium tracking-wide text-zinc-700 inline-flex items-center gap-1.5">
           You&apos;ve discovered{" "}
           <button

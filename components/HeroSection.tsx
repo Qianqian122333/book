@@ -119,7 +119,7 @@ export default function HeroSection() {
           </div>
           <p
             ref={bioRef}
-            className="mt-12 text-right text-black self-end text-sm sm:text-base md:text-lg leading-[1.2] md:leading-[21.6px]"
+            className="mt-12 text-right text-zinc-500 self-end text-sm sm:text-base md:text-lg leading-[1.2] md:leading-[21.6px]"
           >
             Hi, I&apos;m{" "}
             <button
