@@ -710,11 +710,17 @@ export default function GaahleriCommunityPage() {
                   <tbody>
                     {[
                       { before: "6k views", after: "24k views" },
-                      { before: '"0.3mm nozzle"', after: '"Messy desk → clean zone"' },
+                      {
+                        before: '"0.3mm nozzle"',
+                        after: '"Messy desk → clean zone"',
+                      },
                       { before: '"Buy our bundle"', after: '"Build your own"' },
                       { before: "Sell the tool", after: "Solve the problem" },
                       { before: "Watch our ad", after: "Free 3D model" },
-                      { before: "Free STL as bonus", after: "Free STL as solution" },
+                      {
+                        before: "Free STL as bonus",
+                        after: "Free STL as solution",
+                      },
                     ].map((row, idx) => (
                       <tr
                         key={idx}
@@ -808,14 +814,16 @@ export default function GaahleriCommunityPage() {
                 </h4>
                 <p className="text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">
-                    Users are tired of searching for free, high-quality 3D models.
+                    Users are tired of searching for free, high-quality 3D
+                    models.
                   </span>
                 </p>
                 <p className="text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">
                     Users lack inspiration:
                   </span>{" "}
-                  they want to know what real-life problems 3D models can actually solve.
+                  they want to know what real-life problems 3D models can
+                  actually solve.
                 </p>
               </div>
             </div>
@@ -937,7 +945,9 @@ export default function GaahleriCommunityPage() {
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
                   onClick={() =>
-                    setZoomedImage("/comminity/%E4%B8%87%E5%9C%A3%E8%8A%821.png")
+                    setZoomedImage(
+                      "/comminity/%E4%B8%87%E5%9C%A3%E8%8A%821.png",
+                    )
                   }
                 >
                   <Image
@@ -955,7 +965,9 @@ export default function GaahleriCommunityPage() {
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
                   onClick={() =>
-                    setZoomedImage("/comminity/%E4%B8%87%E5%9C%A3%E8%8A%822.png")
+                    setZoomedImage(
+                      "/comminity/%E4%B8%87%E5%9C%A3%E8%8A%822.png",
+                    )
                   }
                 >
                   <Image

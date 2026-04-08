@@ -64,8 +64,79 @@ export default function Home() {
     <div className="min-h-screen bg-white font-sans text-black">
       <HeroSection />
 
+      {/* Projects Section */}
+      <section
+        id="projects"
+        className="bg-[#F8F4EF] px-6 py-24 md:px-12 lg:px-20"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
+          <h2 className="text-xl font-bold tracking-widest sm:text-2xl">
+            PROJECTS
+          </h2>
+
+          <div className="mt-16 space-y-20">
+            {/* KaleidoColorLab — full row */}
+            <Link href={projects[0].href} className="group block">
+              <div className="relative aspect-2/1 w-full overflow-hidden rounded-lg bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
+                <VideoWithFallback
+                  webmSrc="/kaleidocolorlab/colorlab-hero-video.webm"
+                  videoSrc="/kaleidocolorlab/colorlab-hero-video.mp4"
+                  fallbackSrc="/kaleidocolorlab/poster.webp"
+                  poster="/kaleidocolorlab/poster.webp"
+                  alt="KaleidoColorLab"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="mt-5 space-y-1">
+                <h4 className="text-xs font-bold uppercase tracking-tight">
+                  {projects[0].name}
+                </h4>
+                <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
+                  {projects[0].desc}
+                </p>
+              </div>
+            </Link>
+
+            {/* Aventus Airbrush & Gaahleri Community — two in a row */}
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+              {projects.slice(1).map((proj) => {
+                const imgMap: Record<string, string> = {
+                  "Aventus Airbrush": "/home/project2.webp",
+                  "Gaahleri Community": "/home/project3.webp",
+                };
+                return (
+                  <Link
+                    key={proj.name}
+                    href={proj.href}
+                    className="group block"
+                  >
+                    <div className="aspect-square w-full overflow-hidden rounded-lg bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                      <Image
+                        src={imgMap[proj.name] ?? ""}
+                        alt={proj.name}
+                        width={960}
+                        height={960}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="mt-4 space-y-1">
+                      <h4 className="text-xs font-bold uppercase tracking-tight">
+                        {proj.name}
+                      </h4>
+                      <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
+                        {proj.desc}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Work Experience Section */}
-      <section className="bg-[#F8F4EF] px-6 py-24 md:px-12 lg:px-20">
+      <section className="bg-white px-6 py-24 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
           <h2 className="text-xl font-bold tracking-widest sm:text-2xl">
             WORK EXPERIENCE
@@ -104,72 +175,6 @@ export default function Home() {
                 <div key={exp.num}>{inner}</div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="bg-white px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
-          <h2 className="text-xl font-bold tracking-widest sm:text-2xl">
-            PROJECTS
-          </h2>
-
-          <div className="mt-16 space-y-20">
-            {/* KaleidoColorLab — full row */}
-            <Link href={projects[0].href} className="group block">
-              <div className="relative aspect-2/1 w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
-                <VideoWithFallback
-                  videoSrc="/home/project1.mp4"
-                  fallbackSrc="/home/project1.webp"
-                  alt="KaleidoColorLab"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="mt-5 space-y-1">
-                <h4 className="text-xs font-bold uppercase tracking-tight">
-                  {projects[0].name}
-                </h4>
-                <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                  {projects[0].desc}
-                </p>
-              </div>
-            </Link>
-
-            {/* Aventus Airbrush & Gaahleri Community — two in a row */}
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-              {projects.slice(1).map((proj) => {
-                const imgMap: Record<string, string> = {
-                  "Aventus Airbrush": "/home/project2.webp",
-                  "Gaahleri Community": "/home/project3.webp",
-                };
-                return (
-                  <Link
-                    key={proj.name}
-                    href={proj.href}
-                    className="group block"
-                  >
-                    <div className="aspect-square w-full overflow-hidden bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                      <Image
-                        src={imgMap[proj.name] ?? ""}
-                        alt={proj.name}
-                        width={960}
-                        height={960}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div className="mt-4 space-y-1">
-                      <h4 className="text-xs font-bold uppercase tracking-tight">
-                        {proj.name}
-                      </h4>
-                      <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                        {proj.desc}
-                      </p>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>

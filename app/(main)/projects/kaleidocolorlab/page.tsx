@@ -543,6 +543,27 @@ export default function KaleidoColorLabPage() {
         </div>
       </section>
 
+      {/* Full-width hero video */}
+      <section className="w-full">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/kaleidocolorlab/poster.webp"
+          className="w-full block"
+        >
+          <source
+            src="/kaleidocolorlab/colorlab-hero-video.webm"
+            type="video/webm"
+          />
+          <source
+            src="/kaleidocolorlab/colorlab-hero-video.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </section>
+
       {/* ════════════════════════════════════════════════════════
           SECTION 1: PROJECT OVERVIEW
           Hero image fills full width; cards directly below.
