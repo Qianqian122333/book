@@ -6,6 +6,8 @@ import Image from "next/image";
 import {
   ArrowLeft,
   Heart,
+  HeartCrack,
+  HelpCircle,
   User,
   Clock,
   Users,
@@ -26,34 +28,49 @@ const techStack = [
   { icon: "/shopify.svg", label: "Shopify" },
   { icon: "/html.svg", label: "HTML" },
   { icon: "/css.svg", label: "CSS" },
+  { icon: "/javascript.svg", label: "JavaScript" },
 ];
 
 /* ─── Story heading words ─── */
 const storyWords = [
+  "How",
   "I",
-  "used",
-  "data-driven",
-  "insights",
-  "to",
-  "elevate",
+  "solved",
   "the",
-  "brand",
-  "beyond",
-  "the",
-  "checkout",
-  "page.",
+  "problem",
+  "of",
+  "low",
+  "user",
+  "retention",
+  "in",
+  "traditional",
+  "e-commerce",
+  "stores.",
+];
+
+const storyWords1b = [
+  "I",
+  "found",
+  "real",
+  "user",
+  "pain",
+  "points",
+  "through",
+  "social",
+  "media",
+  "data",
+  "analysis.",
 ];
 
 const storyWords2 = [
-  "Validation",
-  "Through",
-  "Action:",
   "Turning",
-  "Holidays",
+  "Holidays,",
+  "Hardships,",
   "and",
-  "Hardships",
+  "Competitions",
   "into",
-  "Engagement",
+  "Community",
+  "Flywheels",
 ];
 
 const storyWords3 = [
@@ -72,10 +89,12 @@ export default function GaahleriCommunityPage() {
   const storyRef = useRef<HTMLDivElement>(null);
   const storyRef2 = useRef<HTMLDivElement>(null);
   const storyRef3 = useRef<HTMLDivElement>(null);
+  const storyRef1b = useRef<HTMLDivElement>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
     let observerInstance: IntersectionObserver | null = null;
+    let observer1bInstance: IntersectionObserver | null = null;
     let observer2Instance: IntersectionObserver | null = null;
     let observer3Instance: IntersectionObserver | null = null;
 
@@ -126,6 +145,34 @@ export default function GaahleriCommunityPage() {
             { threshold: 0.15 },
           );
           observerInstance.observe(el);
+        }
+
+        /* ─ Story heading 1b animation ─ */
+        if (storyRef1b.current) {
+          const el1b = storyRef1b.current;
+          const words1b = el1b.querySelectorAll<HTMLElement>(".story-word");
+          observer1bInstance = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  gsap.fromTo(
+                    words1b,
+                    { y: 20, opacity: 0 },
+                    {
+                      y: 0,
+                      opacity: 1,
+                      duration: 0.5,
+                      stagger: 0.06,
+                      ease: "back.out(1.7)",
+                    },
+                  );
+                  observer1bInstance?.disconnect();
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+          observer1bInstance.observe(el1b);
         }
 
         /* ─ Story heading 2 animation ─ */
@@ -189,7 +236,7 @@ export default function GaahleriCommunityPage() {
             .querySelectorAll<HTMLElement>(".wave-word")
             .forEach((w) => (w.style.opacity = "1"));
         }
-        [storyRef, storyRef2, storyRef3].forEach((ref) => {
+        [storyRef, storyRef1b, storyRef2, storyRef3].forEach((ref) => {
           if (ref.current) {
             ref.current
               .querySelectorAll<HTMLElement>(".story-word")
@@ -202,6 +249,7 @@ export default function GaahleriCommunityPage() {
     init();
     return () => {
       observerInstance?.disconnect();
+      observer1bInstance?.disconnect();
       observer2Instance?.disconnect();
       observer3Instance?.disconnect();
     };
@@ -268,10 +316,10 @@ export default function GaahleriCommunityPage() {
           </div>
 
           <p className="text-lg text-zinc-500 leading-relaxed text-center max-w-3xl mx-auto">
-            Gaahleri Community bridges the gap between hardware ownership and
-            creative mastery. By transforming a transactional store into a
-            resource-rich hub, we turned &quot;one-time buyers&quot; into
-            &quot;long-term brand advocates.&quot;
+            Gaahleri Community transforms a &apos;buy-and-leave&apos; store into
+            a hobby community where users grow from 3D model enthusiasts into
+            creative masters — turning one-time buyers into long-term brand
+            advocates.
           </p>
         </div>
       </section>
@@ -296,7 +344,8 @@ export default function GaahleriCommunityPage() {
             className="text-center text-4xl text-black font-bold mb-16"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            I Built the Bridge Between Product and Passion
+            I turned a traditional buy-and-leave e-commerce store into a hobby
+            community users visit often.
           </p>
 
           {/* Role / Duration / Collaboration */}
@@ -445,41 +494,30 @@ export default function GaahleriCommunityPage() {
               <Target className="w-6 h-6 text-black shrink-0 mt-0.5" />
               <h3 className="text-black">The Challenge</h3>
             </div>
-
-            {/* Old ecommerce screenshot */}
-            <div
-              className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 mb-4"
-              onClick={() => setZoomedImage("/comminity/ecommerce-old.webp")}
-            >
+            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
               <Image
-                src="/comminity/ecommerce-old.webp"
-                alt="Old E-commerce Store"
-                width={1200}
-                height={675}
-                className="w-full h-auto"
+                src="/comminity/challenge.webp"
+                alt="The Challenge"
+                width={2560}
+                height={800}
+                className="w-full h-auto block"
               />
-              <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                <Maximize2 className="w-4 h-4 text-black" />
-              </div>
             </div>
-            <p
-              className="text-center text-sm text-zinc-500 mb-8"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              The original &quot;buy-and-leave&quot; store
-            </p>
-
-            <div className="ml-10 space-y-3">
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Gaahleri&apos;s website was a standard &quot;buy-and-leave&quot;
-                e-commerce store.
-              </p>
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Brand loyalty was low because there was{" "}
-                <span className="font-bold text-black">
-                  no reason to return after purchase.
-                </span>
-              </p>
+            <div className="ml-10 space-y-2">
+              <ul className="list-disc list-outside pl-5 space-y-2">
+                <li className="text-lg text-zinc-500 leading-relaxed">
+                  Gaahleri&apos;s website was a{" "}
+                  <span className="font-bold text-black">
+                    standard &quot;buy-and-leave&quot; e-commerce store.
+                  </span>
+                </li>
+                <li className="text-lg text-zinc-500 leading-relaxed">
+                  Brand loyalty was low because there was{" "}
+                  <span className="font-bold text-black">
+                    no reason to return after purchase.
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -489,64 +527,170 @@ export default function GaahleriCommunityPage() {
               <Flag className="w-6 h-6 text-black shrink-0 mt-0.5" />
               <h3 className="text-black">Stakeholder Needs</h3>
             </div>
-
-            <p className="ml-10 text-lg text-zinc-500 leading-relaxed mb-8">
+            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
+              <Image
+                src="/comminity/need.webp"
+                alt="Stakeholder Needs"
+                width={2560}
+                height={800}
+                className="w-full h-auto block"
+              />
+            </div>
+            <p className="ml-10 text-lg font-bold text-black leading-relaxed mb-8">
               Increase website traffic and user retention.
             </p>
+          </div>
 
-            {/* Stakeholder vs Me */}
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="bg-white rounded-2xl border-2 border-zinc-200 p-8 space-y-6">
-                <div className="flex items-center justify-between mb-6">
-                  <p
-                    className="font-bold text-black"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    Stakeholders (Sales-driven)
-                  </p>
-                  <span
-                    className="text-xs bg-zinc-100 text-zinc-500 px-3 py-1 rounded-full border border-zinc-200"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    Product-centric
+          {/* Design Question */}
+          <div className="mb-16">
+            <div className="flex items-start gap-3 mb-6">
+              <HelpCircle className="w-6 h-6 text-black shrink-0 mt-0.5" />
+              <h3 className="text-black">Design Question</h3>
+            </div>
+            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
+              <Image
+                src="/comminity/Question.webp"
+                alt="Design Question"
+                width={2560}
+                height={800}
+                className="w-full h-auto block"
+              />
+            </div>
+            <div className="ml-10">
+              <p className="text-lg text-zinc-500 leading-relaxed">
+                <span className="font-bold text-black">
+                  Why would users visit our website
+                </span>{" "}
+                if they aren&apos;t ready to buy our product today?
+              </p>
+            </div>
+          </div>
+
+          {/* The Solution */}
+          <div className="mb-16">
+            <div className="flex items-start gap-3 mb-8">
+              <Target className="w-6 h-6 text-black shrink-0 mt-0.5" />
+              <h3 className="text-black">The Solution</h3>
+            </div>
+            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
+              <Image
+                src="/comminity/solution.webp"
+                alt="The Solution"
+                width={2560}
+                height={800}
+                className="w-full h-auto block"
+              />
+            </div>
+            <div className="ml-10 mb-8">
+              <ul className="list-disc list-outside pl-5 space-y-3">
+                <li className="text-lg leading-relaxed">
+                  <span className="font-bold text-black">
+                    Adding a community page and building a community culture.
                   </span>
+                </li>
+                <li className="text-lg text-zinc-500 leading-relaxed">
+                  Users visit often for info, even without buying.
+                </li>
+              </ul>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 mt-12">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
+                  style={{ aspectRatio: "3840 / 11558" }}
+                  onClick={() => setZoomedImage("/comminity/before.webp")}
+                >
+                  <Image
+                    src="/comminity/before.webp"
+                    alt="Old E-commerce Store"
+                    fill
+                    unoptimized
+                    className="object-cover object-top"
+                  />
+                  <div
+                    className="absolute top-3 left-3 bg-zinc-800 text-white text-xs font-bold px-3 py-1 rounded-full"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Before
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
                 </div>
-                <p className="text-black leading-relaxed">
-                  &quot;We need more product listings and bigger &apos;Buy
-                  Now&apos; buttons.&quot;
-                </p>
-                <p className="text-zinc-500 leading-relaxed text-sm">
-                  They wanted: a high-conversion product catalog.
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  before: product-center
                 </p>
               </div>
-
-              <div className="bg-white rounded-2xl border-2 border-zinc-200 p-8 space-y-6">
-                <div className="flex items-center justify-between mb-6">
-                  <p
-                    className="font-bold text-black"
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
+                  style={{ aspectRatio: "3840 / 11558" }}
+                  onClick={() => setZoomedImage("/comminity/after.webp")}
+                >
+                  <Image
+                    src="/comminity/after.webp"
+                    alt="Community Page"
+                    fill
+                    unoptimized
+                    className="object-cover object-top"
+                  />
+                  <div
+                    className="absolute top-3 left-3 bg-black text-white text-xs font-bold px-3 py-1 rounded-full"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Me
-                  </p>
-                  <span
-                    className="text-xs bg-black text-white px-3 py-1 rounded-full"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    User-centric
-                  </span>
+                    After
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
                 </div>
-                <p className="text-black leading-relaxed">
-                  &quot;Why would a user visit our site if they aren&apos;t
-                  ready to buy a new airbrush today?&quot;
-                </p>
-                <p className="text-zinc-500 leading-relaxed text-sm">
-                  I wanted to know: what do users actually do with our products
-                  once they take them out of the box?
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  after: build a community culture
                 </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* ════════════════════════════════════════════════════════
+          STORY BANNER 1b
+          ═══════════════════════════════════════════════════════ */}
+      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            ref={storyRef1b}
+            className="text-black font-bold leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.5,
+            }}
+          >
+            {storyWords1b.map((word, i) => (
+              <span
+                key={i}
+                className="story-word inline-block mr-[0.3em]"
+                style={{ opacity: 0 }}
+              >
+                {word}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          SECTION 1b: DISCOVERY
+          ═══════════════════════════════════════════════════════ */}
+      <section id="discovery" className="w-full py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Discovery: The 24k Insight */}
           <div className="mb-6">
             <div className="flex items-start gap-3 mb-6">
@@ -564,18 +708,24 @@ export default function GaahleriCommunityPage() {
               >
                 Data Analysis
               </h4>
-              <p className="text-lg text-zinc-500 leading-relaxed ml-1 mb-8">
-                While auditing YouTube performance, I found a
-                &quot;Workstation&quot; video with{" "}
-                <span className="font-bold text-black">24,000 views</span>, far
-                exceeding the 6k average for product demo videos.
-              </p>
+              <ul className="list-disc list-outside pl-5 ml-1 space-y-2 mb-8">
+                <li className="text-lg text-zinc-500 leading-relaxed">
+                  The company&apos;s main promotional channels are its sales
+                  website and YouTube.
+                </li>
+                <li className="text-lg text-zinc-500 leading-relaxed">
+                  While auditing YouTube performance, I found a
+                  &quot;Workstation&quot; video with{" "}
+                  <span className="font-bold text-black">24,000 views</span>,
+                  far exceeding the 6k average for product demo videos.
+                </li>
+              </ul>
 
               {/* Two video comparison images side by side */}
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="flex flex-col">
                   <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden aspect-video"
+                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
                     onClick={() => setZoomedImage("/comminity/24k video.webp")}
                   >
                     <Image
@@ -584,6 +734,19 @@ export default function GaahleriCommunityPage() {
                       fill
                       className="object-contain"
                     />
+                    <div
+                      className="absolute top-3 right-3 bg-white text-black font-extrabold text-3xl px-3 py-1 rounded-xl shadow-lg leading-none"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      24k
+                    </div>
+                    <div
+                      className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      <Users className="w-3 h-3 shrink-0" />
+                      Users face similar problems
+                    </div>
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
                     </div>
@@ -608,7 +771,7 @@ export default function GaahleriCommunityPage() {
                 </div>
                 <div className="flex flex-col">
                   <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden aspect-video"
+                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
                     onClick={() =>
                       setZoomedImage("/comminity/other video .webp")
                     }
@@ -619,6 +782,19 @@ export default function GaahleriCommunityPage() {
                       fill
                       className="object-contain"
                     />
+                    <div
+                      className="absolute top-3 right-3 bg-white text-black font-extrabold text-3xl px-3 py-1 rounded-xl shadow-lg leading-none"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      6k
+                    </div>
+                    <div
+                      className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      <Users className="w-3 h-3 shrink-0" />
+                      Users need 3D models &amp; our product to solve problems
+                    </div>
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
                     </div>
@@ -655,37 +831,47 @@ export default function GaahleriCommunityPage() {
               <div className="grid gap-6 md:grid-cols-2 mb-8">
                 <div className="flex flex-col">
                   <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50"
-                    onClick={() => setZoomedImage("/comminity/feedback1.png")}
+                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                    onClick={() => setZoomedImage("/comminity/feedback1.webp")}
                   >
                     <Image
-                      src="/comminity/feedback1.png"
+                      src="/comminity/feedback1.webp"
                       alt="User Feedback 1"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto"
+                      fill
+                      className="object-contain"
                     />
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
                     </div>
                   </div>
+                  <p
+                    className="mt-3 text-center text-sm text-zinc-500"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Users face similar problems
+                  </p>
                 </div>
                 <div className="flex flex-col">
                   <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50"
-                    onClick={() => setZoomedImage("/comminity/feedback2.png")}
+                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                    onClick={() => setZoomedImage("/comminity/feedback2.webp")}
                   >
                     <Image
-                      src="/comminity/feedback2.png"
+                      src="/comminity/feedback2.webp"
                       alt="User Feedback 2"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto"
+                      fill
+                      className="object-contain"
                     />
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
                     </div>
                   </div>
+                  <p
+                    className="mt-3 text-center text-sm text-zinc-500"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Users need 3D models
+                  </p>
                 </div>
               </div>
 
@@ -697,7 +883,7 @@ export default function GaahleriCommunityPage() {
                         className="text-left px-6 py-4 font-bold text-black"
                         style={{ fontFamily: "var(--font-body)" }}
                       >
-                        Before (Product-centric)
+                        Other Video (Product-centric)
                       </th>
                       <th
                         className="text-left px-6 py-4 font-bold text-black"
@@ -711,16 +897,15 @@ export default function GaahleriCommunityPage() {
                     {[
                       { before: "6k views", after: "24k views" },
                       {
-                        before: '"0.3mm nozzle"',
-                        after: '"Messy desk → clean zone"',
+                        before: '"Our product is great → buy it now!"',
+                        after:
+                          '"We use our product & 3D models: Messy workstation → clean zone"',
                       },
-                      { before: '"Buy our bundle"', after: '"Build your own"' },
-                      { before: "Sell the tool", after: "Solve the problem" },
-                      { before: "Watch our ad", after: "Free 3D model" },
                       {
-                        before: "Free STL as bonus",
-                        after: "Free STL as solution",
+                        before: "Introduce the product",
+                        after: "Solve the real problem",
                       },
+                      { before: "Watch our ad", after: "Free 3D model" },
                     ].map((row, idx) => (
                       <tr
                         key={idx}
@@ -745,58 +930,80 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
 
-            {/* Updated User Persona */}
+            {/* User Research */}
             <div className="mb-10">
               <h4
                 className="font-bold text-black mb-6 ml-1"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Updated User Persona
+                User Research: 3D model first → then our product
               </h4>
               <div className="grid gap-6 md:grid-cols-2 items-stretch mb-8">
                 {/* Main User image */}
                 <div className="flex flex-col">
-                  <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                    onClick={() => setZoomedImage("/comminity/main%20user.png")}
-                  >
-                    <Image
-                      src="/comminity/main%20user.png"
-                      alt="63.6% of users are model makers"
-                      fill
-                      className="object-contain"
-                    />
-                    <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                      <Maximize2 className="w-4 h-4 text-black" />
+                  <div className="rounded-2xl border-2 border-zinc-200 overflow-hidden">
+                    <div
+                      className="relative group cursor-zoom-in bg-white aspect-video"
+                      onClick={() =>
+                        setZoomedImage("/comminity/main%20user.webp")
+                      }
+                    >
+                      <Image
+                        src="/comminity/main%20user.webp"
+                        alt="63.6% of users are model makers"
+                        fill
+                        className="object-contain"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/90">
+                        <p
+                          className="text-xl font-extrabold text-black text-center"
+                          style={{ fontFamily: "var(--font-body)" }}
+                        >
+                          63.6% 3D model
+                        </p>
+                      </div>
+                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                        <Maximize2 className="w-4 h-4 text-black" />
+                      </div>
                     </div>
                   </div>
                   <p
-                    className="mt-3 text-center text-sm text-zinc-500"
+                    className="mt-2 text-center text-sm font-medium text-zinc-600"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    63.6% of users are model makers
+                    User Research
                   </p>
                 </div>
                 {/* Community Persona image */}
                 <div className="flex flex-col">
-                  <div
-                    className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                    onClick={() =>
-                      setZoomedImage("/comminity/community-persona.png")
-                    }
-                  >
-                    <Image
-                      src="/comminity/community-persona.png"
-                      alt="User Persona"
-                      fill
-                      className="object-contain"
-                    />
-                    <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                      <Maximize2 className="w-4 h-4 text-black" />
+                  <div className="rounded-2xl border-2 border-zinc-200 overflow-hidden">
+                    <div
+                      className="relative group cursor-zoom-in bg-white aspect-video"
+                      onClick={() =>
+                        setZoomedImage("/comminity/community-persona.webp")
+                      }
+                    >
+                      <Image
+                        src="/comminity/community-persona.webp"
+                        alt="User Persona"
+                        fill
+                        className="object-contain"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/90">
+                        <p
+                          className="text-sm font-extrabold text-black text-center"
+                          style={{ fontFamily: "var(--font-body)" }}
+                        >
+                          Finding 3D models is often frustrating
+                        </p>
+                      </div>
+                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                        <Maximize2 className="w-4 h-4 text-black" />
+                      </div>
                     </div>
                   </div>
                   <p
-                    className="mt-3 text-center text-sm text-zinc-500"
+                    className="mt-2 text-center text-sm font-medium text-zinc-600"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     User Persona
@@ -806,25 +1013,29 @@ export default function GaahleriCommunityPage() {
 
               {/* User Pain Points */}
               <div className="space-y-3 ml-1">
-                <h4
-                  className="font-bold text-black mb-4"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  User Pain Points
-                </h4>
-                <p className="text-zinc-500 leading-relaxed">
-                  <span className="font-bold text-black">
-                    Users are tired of searching for free, high-quality 3D
-                    models.
-                  </span>
-                </p>
-                <p className="text-zinc-500 leading-relaxed">
-                  <span className="font-bold text-black">
-                    Users lack inspiration:
-                  </span>{" "}
-                  they want to know what real-life problems 3D models can
-                  actually solve.
-                </p>
+                <div className="flex items-center gap-2 mb-4">
+                  <HeartCrack className="w-5 h-5 text-black shrink-0" />
+                  <h4
+                    className="font-bold text-black"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    User Pain Points
+                  </h4>
+                </div>
+                <ul className="list-disc list-outside pl-5 space-y-2">
+                  <li className="text-zinc-500 leading-relaxed">
+                    <span className="font-bold text-black">
+                      Users are tired of searching for free, high-quality 3D
+                      models.
+                    </span>
+                  </li>
+                  <li className="text-zinc-500 leading-relaxed">
+                    <span className="font-bold text-black">
+                      Users want to solve real-world problems with their own
+                      hand-drawn 3D models.
+                    </span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -833,23 +1044,17 @@ export default function GaahleriCommunityPage() {
           <div>
             <div className="flex items-start gap-3 mb-6">
               <Lightbulb className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">My Ideation: An Ecosystem of Value</h3>
+              <h3 className="text-black">
+                My Ideation: 3D model community + Our Product
+              </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed ml-10 mb-6">
-              <span className="font-bold text-black">
-                User-centered problem:
-              </span>{" "}
-              Engagement stops once the transaction is over.
-            </p>
 
             <div
               className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 ml-10 mb-6"
-              onClick={() =>
-                setZoomedImage("/comminity/community ideation.png")
-              }
+              onClick={() => setZoomedImage("/comminity/Ideation.webp")}
             >
               <Image
-                src="/comminity/community ideation.png"
+                src="/comminity/Ideation.webp"
                 alt="My Ideation: An Ecosystem of Value"
                 width={1200}
                 height={675}
@@ -863,7 +1068,7 @@ export default function GaahleriCommunityPage() {
               className="text-center text-sm text-zinc-500 mb-6 ml-10"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              My Ideation: An Ecosystem of Value
+              My Ideation: Gaahleri 3D Model Community
             </p>
 
             <div className="bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6 ml-10">
@@ -874,9 +1079,9 @@ export default function GaahleriCommunityPage() {
                 User-centered
               </span>
               <p className="text-lg text-black leading-relaxed font-bold">
-                Provide free, high-value digital assets (STL files) and
-                tutorials that solve real user problems — turning a basic tool
-                into a complete, ready-to-use workspace solution.
+                Users need 3D models before using our product. This process is
+                frustrating. We&apos;ll provide them for free and build a
+                community.
               </p>
             </div>
           </div>
@@ -919,39 +1124,42 @@ export default function GaahleriCommunityPage() {
           <div className="mb-20">
             <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
               <span style={{ fontFamily: "var(--font-body)" }}>
-                Validation 1 · The Halloween Experiment
+                Stage 1 · The Halloween Experiment
               </span>
             </div>
 
             <p className="text-lg text-zinc-500 leading-relaxed mb-2">
               <span className="font-bold text-black">Insight:</span> Users want
-              a reason to use their pigments{" "}
-              <span className="font-bold text-black">right now.</span>
+              to create and paint Halloween-themed 3D models.
             </p>
             <p className="text-lg text-zinc-500 leading-relaxed mb-2">
-              <span className="font-bold text-black">Action:</span> We launched
-              a &quot;pet-safe&quot; painting video + free 3D pumpkin STL files
-              + a curated pigment bundle.
+              <span className="font-bold text-black">Action:</span> We released
+              a Halloween pigment bundle, created a tutorial video on painting
+              Halloween 3D models, and offered the 3D model files for free.
+            </p>
+            <p className="text-lg text-zinc-500 leading-relaxed mb-2">
+              <span className="font-bold text-black">Message:</span>{" "}
+              &quot;Here&apos;s everything you need to create. Now bring it to
+              life.&quot;
             </p>
             <p className="text-lg text-zinc-500 leading-relaxed mb-8">
-              <span className="font-bold text-black">Outcome:</span> The first
-              wave of organic user-generated content. Pigment set sales spiked
-              because the &quot;reason to paint&quot; was provided for free.
+              <span className="font-bold text-black">Outcome:</span>{" "}
+              <span className="font-bold text-black">
+                The first wave of organic user-generated content.
+              </span>{" "}
+              Pigment set sales spiked because the &quot;reason to paint&quot; —
+              the 3D model — was provided for free.
             </p>
 
             {/* Halloween images */}
             <div className="grid gap-6 md:grid-cols-2 mb-8">
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                  onClick={() =>
-                    setZoomedImage(
-                      "/comminity/%E4%B8%87%E5%9C%A3%E8%8A%821.png",
-                    )
-                  }
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                  onClick={() => setZoomedImage("/comminity/Halloween1.webp")}
                 >
                   <Image
-                    src="/comminity/%E4%B8%87%E5%9C%A3%E8%8A%821.png"
+                    src="/comminity/Halloween1.webp"
                     alt="Halloween Campaign 1"
                     fill
                     className="object-contain"
@@ -960,18 +1168,20 @@ export default function GaahleriCommunityPage() {
                     <Maximize2 className="w-4 h-4 text-black" />
                   </div>
                 </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Halloween Webpage 1
+                </p>
               </div>
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                  onClick={() =>
-                    setZoomedImage(
-                      "/comminity/%E4%B8%87%E5%9C%A3%E8%8A%822.png",
-                    )
-                  }
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                  onClick={() => setZoomedImage("/comminity/Halloween2.webp")}
                 >
                   <Image
-                    src="/comminity/%E4%B8%87%E5%9C%A3%E8%8A%822.png"
+                    src="/comminity/Halloween2.webp"
                     alt="Halloween Campaign 2"
                     fill
                     className="object-contain"
@@ -980,6 +1190,12 @@ export default function GaahleriCommunityPage() {
                     <Maximize2 className="w-4 h-4 text-black" />
                   </div>
                 </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Halloween Webpage 2
+                </p>
               </div>
             </div>
 
@@ -987,12 +1203,10 @@ export default function GaahleriCommunityPage() {
               <div className="flex flex-col">
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                  onClick={() =>
-                    setZoomedImage("/comminity/halloween user.webp")
-                  }
+                  onClick={() => setZoomedImage("/comminity/user-shsare.webp")}
                 >
                   <Image
-                    src="/comminity/halloween user.webp"
+                    src="/comminity/user-shsare.webp"
                     alt="Halloween User-Generated Content"
                     fill
                     className="object-contain"
@@ -1039,13 +1253,13 @@ export default function GaahleriCommunityPage() {
           <div>
             <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
               <span style={{ fontFamily: "var(--font-body)" }}>
-                Validation 2 · The Christmas Pivot: From Flaw to Feature
+                Stage 2 · The Christmas Pivot: From Flaw to Strength
               </span>
             </div>
 
             <p className="text-lg text-zinc-500 leading-relaxed mb-2">
               <span className="font-bold text-black">Conflict:</span> Users
-              reported that airbrush cup lids sometimes get stuck – a negative
+              reported that airbrush cup lids sometimes get stuck — a negative
               product experience.
             </p>
             <p className="text-lg text-zinc-500 leading-relaxed mb-2">
@@ -1059,8 +1273,11 @@ export default function GaahleriCommunityPage() {
             </p>
             <p className="text-lg text-zinc-500 leading-relaxed mb-8">
               <span className="font-bold text-black">Outcome:</span> Negative
-              sentiment disappeared. Users began printing, customizing, and
-              sharing their own lid designs – marking the birth of co-creation.
+              sentiment decreased significantly. Users began printing,
+              customizing, and sharing their own lid designs —{" "}
+              <span className="font-bold text-black">
+                customer satisfaction with the product rose from 64.3% to 89.2%.
+              </span>
             </p>
 
             {/* Born from your feedback — full width */}
@@ -1068,11 +1285,11 @@ export default function GaahleriCommunityPage() {
               <div
                 className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50"
                 onClick={() =>
-                  setZoomedImage("/comminity/born from your feedback.png")
+                  setZoomedImage("/comminity/born from your feedback.webp")
                 }
               >
                 <Image
-                  src="/comminity/born from your feedback.png"
+                  src="/comminity/born from your feedback.webp"
                   alt="Born From Your Feedback"
                   width={1200}
                   height={675}
@@ -1090,18 +1307,16 @@ export default function GaahleriCommunityPage() {
               </p>
             </div>
 
-            {/* Co-creation community page — duplicated */}
+            {/* Co-creation community page — two separate cards */}
             <div className="grid gap-6 md:grid-cols-2">
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                  onClick={() =>
-                    setZoomedImage("/comminity/charisma webpage.png")
-                  }
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() => setZoomedImage("/comminity/cup.webp")}
                 >
                   <Image
-                    src="/comminity/charisma webpage.png"
-                    alt="Charisma Webpage"
+                    src="/comminity/cup.webp"
+                    alt="Co-creation Community Page"
                     fill
                     className="object-contain"
                   />
@@ -1113,19 +1328,17 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Co-creation community page
+                  Problem: cup lids sometimes get stuck
                 </p>
               </div>
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
-                  onClick={() =>
-                    setZoomedImage("/comminity/charisma webpage.png")
-                  }
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#4e0c06] aspect-video"
+                  onClick={() => setZoomedImage("/comminity/Christmas.webp")}
                 >
                   <Image
-                    src="/comminity/charisma webpage.png"
-                    alt="Charisma Webpage"
+                    src="/comminity/Christmas.webp"
+                    alt="Co-creation Community Page"
                     fill
                     className="object-contain"
                   />
@@ -1137,7 +1350,88 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Co-creation community page
+                  Turn the problem into user-loved DIY.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Stage 3 — Creator Cup */}
+          <div className="mt-20">
+            <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
+              <span style={{ fontFamily: "var(--font-body)" }}>
+                Stage 3 · The Gaahleri World Creator Cup: Raising the Stakes
+              </span>
+            </div>
+
+            <p className="text-lg text-zinc-500 leading-relaxed mb-2">
+              <span className="font-bold text-black">Insight:</span> The
+              community was ready for a challenge beyond daily creation — they
+              wanted recognition, competition, and a reason to push their skills
+              to the limit.
+            </p>
+            <p className="text-lg text-zinc-500 leading-relaxed mb-2">
+              <span className="font-bold text-black">Action:</span> We launched
+              the Gaahleri World Creator Cup (GWCC). This is a high-stakes 3D
+              model competition designed to crown the world&apos;s most
+              disciplined artists and engineers.
+            </p>
+            <p className="text-lg text-zinc-500 leading-relaxed mb-2">
+              <span className="font-bold text-black">Message:</span> &quot;This
+              is your stage. Show us what you can create.&quot;
+            </p>
+            <p className="text-lg text-zinc-500 leading-relaxed mb-8">
+              <span className="font-bold text-black">Outcome:</span> The
+              community responded with unprecedented levels of engagement and
+              craftsmanship. The GWCC became the elite standard for
+              multidisciplinary creativity, transforming casual painters into
+              serious competitors and elevating the entire community&apos;s
+              skill ceiling.
+            </p>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                  onClick={() => setZoomedImage("/comminity/competition.webp")}
+                >
+                  <Image
+                    src="/comminity/competition.webp"
+                    alt="Gaahleri World Creator Cup Competition"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Gaahleri World Creator Cup
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
+                  onClick={() => setZoomedImage("/comminity/model.webp")}
+                >
+                  <Image
+                    src="/comminity/model.webp"
+                    alt="Community 3D Model Creation"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Community 3D model showcase
                 </p>
               </div>
             </div>
@@ -1181,7 +1475,7 @@ export default function GaahleriCommunityPage() {
           <div className="mb-20">
             <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
               <span style={{ fontFamily: "var(--font-body)" }}>
-                Feature 1 · Free Resource Center (STL Vault)
+                Feature 1 · Free 3D Resource Center
               </span>
             </div>
 
@@ -1190,14 +1484,13 @@ export default function GaahleriCommunityPage() {
               <div>
                 <p className="text-lg text-zinc-500 leading-relaxed mb-2">
                   <span className="font-bold text-black">Pain point:</span>{" "}
-                  Professional workstation accessories are expensive or hard to
-                  find.
+                  Users struggle to find high-quality 3D models.
                 </p>
                 <p className="text-lg text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">Solution:</span> A
-                  centralized free download hub (wall mounts, desk organizers,
-                  cup grips). This gave users a reason to visit the site often –
-                  not yearly.
+                  centralized free 3D model download hub (wall mounts, desk
+                  organizers, cup grips, etc.). This gave users a reason to
+                  visit the website often.
                 </p>
               </div>
             </div>
@@ -1205,11 +1498,11 @@ export default function GaahleriCommunityPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden aspect-video"
-                  onClick={() => setZoomedImage("/comminity/resource1.png")}
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() => setZoomedImage("/comminity/resource1.webp")}
                 >
                   <Image
-                    src="/comminity/resource1.png"
+                    src="/comminity/resource1.webp"
                     alt="Resource Center STL Vault 1"
                     fill
                     className="object-contain"
@@ -1227,11 +1520,11 @@ export default function GaahleriCommunityPage() {
               </div>
               <div className="flex flex-col">
                 <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden aspect-video"
-                  onClick={() => setZoomedImage("/comminity/resource2.png")}
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() => setZoomedImage("/comminity/resource2.webp")}
                 >
                   <Image
-                    src="/comminity/resource2.png"
+                    src="/comminity/resource2.webp"
                     alt="Resource Center STL Vault 2"
                     fill
                     className="object-contain"
@@ -1275,10 +1568,10 @@ export default function GaahleriCommunityPage() {
 
             <div
               className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50"
-              onClick={() => setZoomedImage("/comminity/discord.png")}
+              onClick={() => setZoomedImage("/comminity/discord.webp")}
             >
               <Image
-                src="/comminity/discord.png"
+                src="/comminity/discord.webp"
                 alt="Discord Creator Lounge"
                 width={1200}
                 height={675}
@@ -1325,7 +1618,7 @@ export default function GaahleriCommunityPage() {
               { step: "02", label: "Community", sub: "Learn / Download" },
               { step: "03", label: "Discord", sub: "Share / Connect" },
               { step: "04", label: "Repeat Purchase", sub: "New Tools" },
-            ].map((item, i) => (
+            ].map((item) => (
               <div
                 key={item.step}
                 className="relative flex flex-col items-center text-center bg-white rounded-2xl border-2 border-zinc-200 p-6 shadow-sm"
@@ -1348,17 +1641,37 @@ export default function GaahleriCommunityPage() {
                 >
                   {item.sub}
                 </p>
-                {i < 3 && (
-                  <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
-                    <span className="text-zinc-400 text-xl">→</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>
 
+          {/* User reviews — result image */}
+          <div className="flex flex-col mb-10">
+            <div
+              className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+              onClick={() => setZoomedImage("/comminity/result.webp")}
+            >
+              <Image
+                src="/comminity/result.webp"
+                alt="Online Store Sales Result"
+                fill
+                className="object-contain"
+              />
+              <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                <Maximize2 className="w-4 h-4 text-black" />
+              </div>
+            </div>
+            <p
+              className="mt-4 text-center text-sm text-zinc-500"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Online store sales increased by{" "}
+              <span className="text-black font-extrabold text-3xl">214%</span>
+            </p>
+          </div>
+
           {/* Outcome highlight */}
-          <div className="bg-white border-l-4 border-black rounded-r-2xl p-6 mb-14">
+          <div className="bg-white border-l-4 border-black rounded-r-2xl p-6">
             <span
               className="inline-block text-xs bg-black text-white px-3 py-1 rounded-full mb-3"
               style={{ fontFamily: "var(--font-body)" }}
@@ -1366,26 +1679,9 @@ export default function GaahleriCommunityPage() {
               Outcome
             </span>
             <p className="text-lg text-black leading-relaxed font-bold">
-              We didn&apos;t just sell more airbrushes – we built a
-              &quot;creative home.&quot; Brand perception shifted from hardware
-              vendor to &quot;creator ally,&quot; drastically reducing negative
-              feedback and doubling the value of each customer.
+              We built a &quot;creative home&quot; &mdash; shifting from product
+              vendor to creator ally, doubling customer value.
             </p>
-          </div>
-
-          {/* User review placeholder */}
-          <div className="relative flex items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed border-zinc-300 bg-white aspect-3/1">
-            <div className="text-center p-6 space-y-3">
-              <div className="mx-auto w-14 h-14 rounded-xl border-2 border-zinc-300 flex items-center justify-center bg-[#F8F4EF]">
-                <TrendingUp className="w-6 h-6 text-black/40" />
-              </div>
-              <p
-                className="text-sm text-zinc-500"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                User Reviews
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -1424,7 +1720,7 @@ export default function GaahleriCommunityPage() {
               {
                 Icon: TrendingUp,
                 title: "Systemic Value Over Isolated Features",
-                body: "A community is not a 'page' – it's a system. By aligning STL files, Discord, and Shopify, I created a flywheel: every free download fueled a future sale.",
+                body: "A community is not a 'page' – it's a system. By aligning 3D model files, Discord, and Shopify, I created a flywheel: every free download fueled a future sale.",
               },
             ].map((item) => (
               <div
@@ -1453,9 +1749,9 @@ export default function GaahleriCommunityPage() {
             Not Just a Store, But a Creator&apos;s Home
           </h2>
           <p className="text-xl text-zinc-500 mb-10 leading-relaxed max-w-2xl mx-auto">
-            See how Gaahleri evolved from a hardware seller into the #1 hub for
-            airbrush enthusiasts. Gaahleri&apos;s community is still growing.
-            This project taught me that true UX is not just about designing
+            See how Gaahleri evolved from a product seller into the hub for 3D
+            model enthusiasts. Gaahleri&apos;s community is still growing. This
+            project taught me that true UX is not just about designing
             interfaces – it&apos;s about designing relationships, trust, and the
             possibility of co-creation.
           </p>
