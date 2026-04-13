@@ -1027,7 +1027,7 @@ export default function KaleidoColorLabPage() {
               <h3 className="text-black">My Ideation</h3>
             </div>
             <Image
-              src="/kaleidocolorlab/Ideate.jpg"
+              src="/kaleidocolorlab/Ideate.webp"
               alt="Ideation Sketches"
               width={1200}
               height={675}
