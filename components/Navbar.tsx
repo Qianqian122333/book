@@ -15,8 +15,8 @@ import {
 
 const projects = [
   { name: "KaleidoColorLab", href: "/projects/kaleidocolorlab" },
-  { name: "Aventus Airbrush", href: "/projects/aventus-airbrush" },
   { name: "Gaahleri Community", href: "/projects/gaahleri-community" },
+  { name: "Aventus Airbrush", href: "/projects/aventus-airbrush" },
 ];
 
 export default function Navbar() {

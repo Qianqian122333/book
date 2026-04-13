@@ -135,11 +135,11 @@ export default function HeroSection() {
             </button>{" "}
             Qianqian Wei, A UX
             <br />
-            Designer &amp; Developer.
+            Designer &amp; Developer
             <br />
-            Love Traditional
+            With Business
             <br />
-            Clothes.
+            Insight.
           </p>
         </div>
       </div>

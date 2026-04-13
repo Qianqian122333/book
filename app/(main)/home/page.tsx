@@ -3,41 +3,31 @@ import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 import VideoWithFallback from "@/components/VideoWithFallback";
 
-const experiences = [
+const skills = [
   {
     num: "01",
-    title: "UX Developer",
-    period: "08 2025 - Present, Gaahleri",
-    type: "Full-time, China",
-    href: "https://www.gaahleri.com/",
+    title: "Research",
+    desc: "User interviews · Surveys · Usability testing · Data analysis",
   },
   {
     num: "02",
-    title: "UX Designer",
-    period: "07 2025 - 08 2025, YoloLiv",
-    type: "Full-time, China",
-    href: "https://www.yololiv.com/",
+    title: "UX Design",
+    desc: "Figma · User flows · Wireframing · Prototyping",
   },
   {
     num: "03",
-    title: "UX Specialist",
-    period: "10 2023 - 06 2025, ATG",
-    type: "Full-time, London",
-    href: "https://www.atgtickets.com/",
+    title: "Front-end Development",
+    desc: "HTML · CSS · JavaScript · TypeScript · React · Next.js",
   },
   {
     num: "04",
-    title: "UX Designer",
-    period: "03 2023 - 08 2023, Scope",
-    type: "Volunteer, London",
-    href: "https://shop.scope.org.uk/",
+    title: "Project Management",
+    desc: "Agile · Cross-team collaboration · Stakeholder communication",
   },
   {
     num: "05",
-    title: "UX Designer",
-    period: "06 2021 - 08 2022, JinYun Beauty",
-    type: "Full-time, China",
-    href: undefined,
+    title: "Marketing",
+    desc: "Social media · Content strategy · Analytics",
   },
 ];
 
@@ -48,14 +38,14 @@ const projects = [
     href: "/projects/kaleidocolorlab",
   },
   {
-    name: "Aventus Airbrush",
-    desc: "UX Design & Front-end Development",
-    href: "/projects/aventus-airbrush",
-  },
-  {
     name: "Gaahleri Community",
     desc: "UX Design & Front-end Development",
     href: "/projects/gaahleri-community",
+  },
+  {
+    name: "Aventus Airbrush",
+    desc: "UX Design & Front-end Development",
+    href: "/projects/aventus-airbrush",
   },
 ];
 
@@ -139,42 +129,25 @@ export default function Home() {
       <section className="bg-white px-6 py-24 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
           <h2 className="text-xl font-bold tracking-widest sm:text-2xl">
-            WORK EXPERIENCE
+            SKILLS
           </h2>
 
           <div className="mt-16 space-y-16">
-            {experiences.map((exp) => {
-              const inner = (
-                <div className="grid grid-cols-[auto_1fr] items-start gap-8 transition-transform duration-300 hover:translate-x-3">
-                  <span className="text-xl font-medium">{exp.num}</span>
-                  <div className="w-full">
-                    <h3 className="text-xl font-semibold mb-4">{exp.title}</h3>
-                    <hr className="border-zinc-300" />
-                    <div className="mt-4 flex justify-end text-right text-[10px] text-zinc-500 sm:text-xs">
-                      <p>
-                        {exp.period}
-                        <br />
-                        {exp.type}
-                      </p>
-                    </div>
+            {skills.map((skill) => (
+              <div
+                key={skill.num}
+                className="grid grid-cols-[auto_1fr] items-start gap-8 transition-transform duration-300 hover:translate-x-3"
+              >
+                <span className="text-xl font-medium">{skill.num}</span>
+                <div className="w-full">
+                  <h3 className="text-xl font-semibold mb-4">{skill.title}</h3>
+                  <hr className="border-zinc-300" />
+                  <div className="mt-4 flex justify-end text-right text-[10px] text-zinc-500 sm:text-xs">
+                    <p>{skill.desc}</p>
                   </div>
                 </div>
-              );
-
-              return exp.href ? (
-                <a
-                  key={exp.num}
-                  href={exp.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  {inner}
-                </a>
-              ) : (
-                <div key={exp.num}>{inner}</div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>

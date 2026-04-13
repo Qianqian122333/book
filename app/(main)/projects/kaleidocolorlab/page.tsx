@@ -24,7 +24,6 @@ import {
   BarChart2,
   Code2,
   Trophy,
-  Flag,
 } from "lucide-react";
 
 /* ─── Tech stack icons ─── */
@@ -40,7 +39,26 @@ const techStack = [
 ];
 
 /* ─── Story heading words ─── */
-const storyWords = ["I", "Discovered", "Real", "User", "Pain", "Points"];
+const storyWords = [
+  "I",
+  "designed",
+  "and",
+  "developed",
+  "the",
+  "color",
+  "website",
+  "to",
+  "integrate",
+  "our",
+  "product",
+  "into",
+  "the",
+  "user\u2019s",
+  "journey.",
+];
+
+/* \u2014 Story heading 7 words (moved inside section 2) \u2014 */
+const storyWords7 = ["I", "Discovered", "Real", "User", "Pain", "Points"];
 
 /* ─── Story heading 3 words (between Section 2 & 3) ─── */
 const storyWords3 = [
@@ -67,22 +85,9 @@ const storyWords4 = [
   "Right",
 ];
 
-/* ─── Story heading 5 words (Post-Beta heading) ─── */
-const storyWords5 = [
-  "Post-Beta",
-  "UX",
-  "Refinements",
-  "–",
-  "From",
-  "Feedback",
-  "to",
-  "Precision",
-];
-
 /* ─── Story heading 2 words ─── */
 const storyWords2 = [
-  "Beta",
-  "Test",
+  "Final",
   "Version:",
   "I",
   "designed",
@@ -181,6 +186,7 @@ export default function KaleidoColorLabPage() {
   const storyRef4 = useRef<HTMLDivElement>(null);
   const storyRef5 = useRef<HTMLDivElement>(null);
   const storyRef6 = useRef<HTMLDivElement>(null);
+  const storyRef7 = useRef<HTMLDivElement>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const [zoomedVideo, setZoomedVideo] = useState<string | null>(null);
 
@@ -191,6 +197,7 @@ export default function KaleidoColorLabPage() {
     let observer4Instance: IntersectionObserver | null = null;
     let observer5Instance: IntersectionObserver | null = null;
     let observer6Instance: IntersectionObserver | null = null;
+    let observer7Instance: IntersectionObserver | null = null;
 
     async function init() {
       try {
@@ -392,6 +399,36 @@ export default function KaleidoColorLabPage() {
 
           observer5Instance.observe(el5);
         }
+
+        /* ─ I Discovered Real User Pain Points banner animation (IntersectionObserver) ─ */
+        if (storyRef7.current) {
+          const el7 = storyRef7.current;
+          const words7 = el7.querySelectorAll<HTMLElement>(".story-word");
+
+          observer7Instance = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  gsap.fromTo(
+                    words7,
+                    { y: 20, opacity: 0 },
+                    {
+                      y: 0,
+                      opacity: 1,
+                      duration: 0.5,
+                      stagger: 0.06,
+                      ease: "back.out(1.7)",
+                    },
+                  );
+                  observer7Instance?.disconnect();
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+
+          observer7Instance.observe(el7);
+        }
       } catch {
         if (waveRef.current) {
           const words =
@@ -428,6 +465,11 @@ export default function KaleidoColorLabPage() {
             storyRef6.current.querySelectorAll<HTMLElement>(".story-word");
           words.forEach((w) => (w.style.opacity = "1"));
         }
+        if (storyRef7.current) {
+          const words =
+            storyRef7.current.querySelectorAll<HTMLElement>(".story-word");
+          words.forEach((w) => (w.style.opacity = "1"));
+        }
       }
     }
 
@@ -439,6 +481,7 @@ export default function KaleidoColorLabPage() {
       observer4Instance?.disconnect();
       observer5Instance?.disconnect();
       observer6Instance?.disconnect();
+      observer7Instance?.disconnect();
     };
   }, []);
 
@@ -753,103 +796,180 @@ export default function KaleidoColorLabPage() {
                 </span>
               </li>
             </ul>
-          </div>
-
-          {/* Stakeholder's Needs — image + comparison */}
-          <div className="mb-16">
-            <div className="flex items-start gap-3 mb-6">
-              <Flag className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">Stakeholder&apos;s Needs</h3>
-            </div>
 
             <Image
-              src="/kaleidocolorlab/stakeholder-thinking.webp"
-              alt="Stakeholder Hypothesis"
+              src="/kaleidocolorlab/challenge.webp"
+              alt="The challenge overview"
               width={1200}
               height={675}
-              className="w-full h-auto rounded-2xl mb-3"
+              className="w-full h-auto rounded-2xl mt-6 border-2 border-zinc-300"
             />
-            <p
-              className="text-center text-sm text-zinc-500 mb-10"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              Build a more detailed product website to boost revenue
+          </div>
+
+          {/* Solution */}
+          <div className="mb-10">
+            <div className="flex items-start gap-3 mb-6">
+              <Lightbulb className="w-6 h-6 text-black shrink-0 mt-0.5" />
+              <h3 className="text-black">The Solution</h3>
+            </div>
+            <p className="ml-9 text-lg text-zinc-500 mb-6">
+              A digital color mixer to integrate our product into the
+              user&apos;s journey
             </p>
-
-            {/* Stakeholder vs My Thinking — side by side */}
-            <div className="grid gap-8 md:grid-cols-2">
-              {/* Left: Stakeholder */}
-              <div className="bg-white rounded-2xl border-2 border-zinc-200 p-8 space-y-6">
-                <div className="flex items-center justify-between mb-6">
-                  <p
-                    className="font-bold text-black"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    Stakeholders
-                  </p>
-                  <span
-                    className="text-xs bg-muted text-zinc-500 px-3 py-1 rounded-full border border-zinc-200"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    Product-centric
-                  </span>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div>
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-300">
+                  <Image
+                    src="/kaleidocolorlab/user use website.webp"
+                    alt="User using Kaleido ColorLab website"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-
-                <div>
-                  <p className="text-black leading-relaxed">
-                    <span className="font-bold">
-                      Stakeholders&apos; Thinking:
-                    </span>{" "}
-                    Users don&apos;t know our product&apos;s advantages.
-                  </p>
-                </div>
-                <div>
-                  <p className="text-black leading-relaxed">
-                    <span className="font-bold">What They Want:</span> A more
-                    detailed Product website.
-                  </p>
-                </div>
+                <p
+                  className="text-center text-sm text-zinc-500 mt-3"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Mix real colors using our digital color mixer
+                </p>
               </div>
 
-              {/* Right: My Thinking */}
-              <div className="bg-white rounded-2xl border-2 border-zinc-200 p-8 space-y-6">
-                <div className="flex items-center justify-between mb-6">
-                  <p
-                    className="font-bold text-black"
-                    style={{ fontFamily: "var(--font-body)" }}
+              <div>
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-300 group">
+                  <video
+                    controls
+                    autoPlay
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="absolute inset-0 w-full h-full object-cover"
                   >
-                    Me
-                  </p>
-                  <span
-                    className="text-xs bg-black text-white px-3 py-1 rounded-full"
-                    style={{ fontFamily: "var(--font-body)" }}
+                    <source
+                      src="/kaleidocolorlab/colorlab intro.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/kaleidocolorlab/colorlab intro.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                  <button
+                    className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10"
+                    onClick={() =>
+                      setZoomedVideo("/kaleidocolorlab/colorlab intro")
+                    }
                   >
-                    User-centric
-                  </span>
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </button>
                 </div>
-                <div>
-                  <p className="text-black leading-relaxed">
-                    <span className="font-bold text-black">My Question:</span>{" "}
-                    All competitors claim greatness. Why would users notice us?
-                  </p>
-                </div>
-                <div>
-                  <p className="text-black leading-relaxed">
-                    <span className="font-bold text-black">
-                      What I Wanted to Know:
-                    </span>{" "}
-                    In what scenario do users decide to purchase our product?
-                  </p>
-                </div>
+                <p
+                  className="text-center text-sm text-zinc-500 mt-3"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Intro: a color-mixing website based on our color products.
+                </p>
+              </div>
+            </div>
+
+            {/* The Result */}
+            <div className="mt-12">
+              <div className="flex items-start gap-3 mb-4">
+                <Trophy className="w-6 h-6 text-black shrink-0 mt-0.5" />
+                <h3 className="text-black">The Result</h3>
+              </div>
+              <p className="ml-9 text-lg text-zinc-500 mb-6">
+                Our color product sales surged{" "}
+                <span className="text-5xl font-extrabold text-black">227%</span>
+                .
+              </p>
+              <div>
+                <Image
+                  src="/kaleidocolorlab/result.webp"
+                  alt="Color product sales surged 227%"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto rounded-2xl border-2 border-zinc-300"
+                />
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Color Sales Rose
+                </p>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* My Findings: User Pain Points */}
+      {/* ── I Discovered Real User Pain Points banner ── */}
+      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            ref={storyRef7}
+            className="text-black font-bold leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.5,
+            }}
+          >
+            {storyWords7.map((word, i) => (
+              <span
+                key={i}
+                className="story-word inline-block mr-[0.3em]"
+                style={{ opacity: 0 }}
+              >
+                {word}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          SECTION 2 continued: Stakeholder's Needs / Findings
+          ═══════════════════════════════════════════════════════ */}
+      <section className="w-full py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Design Question 1 */}
+          <div className="mb-16">
+            <div className="flex items-start gap-3 mb-6">
+              <Search className="w-6 h-6 text-black shrink-0 mt-0.5" />
+              <h3 className="text-black">
+                Design Question 1: Who are our users?
+              </h3>
+            </div>
+            <div className="ml-9 mb-6">
+              <p className="text-lg font-bold text-black">
+                63.6% of users are model makers.
+              </p>
+            </div>
+            <div>
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-300">
+                <Image
+                  src="/kaleidocolorlab/main user.webp"
+                  alt="Main user: 63.6% are model makers"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <p
+                className="mt-3 text-center text-sm text-zinc-500"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Main User: Model Maker
+              </p>
+            </div>
+          </div>
+
+          {/* Design Question 2 */}
           <div className="mb-10">
             <div className="flex items-start gap-3 mb-6">
               <Search className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">My Findings: User Pain Points</h3>
+              <h3 className="text-black">
+                Design Question 2: What&apos;s their pain points?
+              </h3>
             </div>
 
             {/* Big user pain point image first */}
@@ -859,7 +979,7 @@ export default function KaleidoColorLabPage() {
                 alt="User Pain Point Analysis"
                 width={1200}
                 height={675}
-                className="w-full h-auto rounded-2xl"
+                className="w-full h-auto rounded-2xl border-2 border-zinc-300"
               />
               <p
                 className="mt-3 text-center text-sm text-zinc-500"
@@ -911,7 +1031,7 @@ export default function KaleidoColorLabPage() {
               alt="Ideation Sketches"
               width={1200}
               height={675}
-              className="w-full h-auto rounded-2xl mb-3"
+              className="w-full h-auto rounded-2xl mb-3 border-2 border-zinc-300"
             />
             <p
               className="text-center text-sm text-zinc-500 mb-8"
@@ -1005,16 +1125,14 @@ export default function KaleidoColorLabPage() {
               <BarChart2 className="w-6 h-6 text-black shrink-0 mt-0.5" />
               <h3 className="text-black">
                 My Solution 1:{" "}
-                <span className="font-bold text-black">
-                  Competitive Analysis
-                </span>
+                <span className="font-bold text-black">Marketing Analysis</span>
               </h3>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="bg-white rounded-xl border-2 border-zinc-200 overflow-hidden">
                 <div className="relative w-full aspect-video">
                   <Image
-                    src="/kaleidocolorlab/color-app.webp"
+                    src="/kaleidocolorlab/existing color picker.webp"
                     alt="Color mixing app on market"
                     fill
                     className="object-cover"
@@ -1025,8 +1143,10 @@ export default function KaleidoColorLabPage() {
                     It&apos;s not difficult.
                   </h4>
                   <p className="text-zinc-500 leading-relaxed">
-                    Color-mixing apps already exist on the market. The
-                    technology is proven — we&apos;re{" "}
+                    <span className="font-bold text-black">
+                      Color-mixing apps already exist on the market.
+                    </span>{" "}
+                    The technology is proven — we&apos;re{" "}
                     <span className="font-bold text-zinc-900">
                       not starting from zero
                     </span>
@@ -1037,7 +1157,7 @@ export default function KaleidoColorLabPage() {
               <div className="bg-white rounded-xl border-2 border-zinc-200 overflow-hidden">
                 <div className="relative w-full aspect-video">
                   <Image
-                    src="/kaleidocolorlab/product-app.webp"
+                    src="/kaleidocolorlab/color picker and our product.webp"
                     alt="Blue ocean opportunity"
                     fill
                     className="object-cover"
@@ -1048,8 +1168,10 @@ export default function KaleidoColorLabPage() {
                     If we do, we lead the industry.
                   </h4>
                   <p className="text-zinc-500 leading-relaxed">
-                    No competitor at our level has built something similar —
-                    this is a{" "}
+                    <span className="font-bold text-black">
+                      No competitor at our level has built something similar
+                    </span>{" "}
+                    — this is a{" "}
                     <span className="font-bold text-zinc-900">blue ocean</span>.
                     Being first means{" "}
                     <span className="font-bold text-zinc-900">
@@ -1086,7 +1208,7 @@ export default function KaleidoColorLabPage() {
             <div className="flex gap-4 mb-8 items-stretch">
               {/* Code screenshot — 1/3 */}
               <div className="flex flex-col flex-1 gap-2">
-                <div className="relative rounded-2xl overflow-hidden flex-1">
+                <div className="relative rounded-2xl overflow-hidden flex-1 border-2 border-zinc-300">
                   <Image
                     src="/kaleidocolorlab/colorlab-coding.webp"
                     alt="Code Architecture Overview"
@@ -1104,7 +1226,7 @@ export default function KaleidoColorLabPage() {
               {/* Video — 2/3 */}
               <div className="flex flex-col gap-2" style={{ flex: "2 2 0%" }}>
                 <div
-                  className="relative aspect-video rounded-2xl overflow-hidden bg-black flex-1 group cursor-pointer"
+                  className="relative aspect-video rounded-2xl overflow-hidden bg-black flex-1 group cursor-pointer border-2 border-zinc-300"
                   onClick={() =>
                     setZoomedVideo("/kaleidocolorlab/colorlab-prototype")
                   }
@@ -1226,8 +1348,8 @@ export default function KaleidoColorLabPage() {
               </span>{" "}
               for a color mixer.
             </p>
-            <div className="ml-10">
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+            <div>
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-300">
                 <iframe
                   src="https://www.youtube.com/embed/CuCBGLtvFPw?start=340"
                   title="KaleidoColorLab User Video"
@@ -1240,7 +1362,7 @@ export default function KaleidoColorLabPage() {
                 className="mt-3 text-center text-sm text-zinc-500"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Watch the Video (from 5:40)
+                Video for User Feedback (from 5:40)
               </p>
             </div>
           </div>
@@ -1347,27 +1469,26 @@ export default function KaleidoColorLabPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-32">
             {/* ─── Feature 1: Image Color Picker ─── */}
-            <div className="flex flex-col items-center gap-12 md:flex-row">
-              <div className="w-full md:w-1/2 flex flex-col items-center">
-                <div className="mx-auto flex w-full max-w-70 sm:max-w-80 flex-col items-center relative group">
-                  <div className="w-full overflow-hidden rounded-3xl border-4 border-zinc-200 shadow-xl bg-black">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full aspect-[9/16] object-cover"
-                    >
-                      <source
-                        src="/kaleidocolorlab/colorlab-picker.webm"
-                        type="video/webm"
-                      />
-                      <source
-                        src="/kaleidocolorlab/colorlab-picker.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
-                  </div>
+            <div className="flex flex-col gap-8">
+              <div className="w-full">
+                <div className="relative group">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
+                  >
+                    <source
+                      src="/kaleidocolorlab/colorlab-picker.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/kaleidocolorlab/colorlab-picker.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
                   <button
                     className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10"
                     onClick={() =>
@@ -1384,14 +1505,15 @@ export default function KaleidoColorLabPage() {
                   Feature 1 · Image Color Picker
                 </p>
               </div>
-              <div className="w-full space-y-6 md:w-1/2">
+              <div className="w-full space-y-6">
                 <h3 className="text-black">
                   Feature 1 · Image Color Picker：From Pain Point to Profit
                 </h3>
                 <p className="text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">Pain Point:</span>{" "}
                   <span className="font-bold text-black">
-                    Real-world inspiration doesn&apos;t map to our product.
+                    Real-world inspiration doesn&apos;t map to our color
+                    product.
                   </span>
                 </p>
                 <p className="text-zinc-500 leading-relaxed">
@@ -1402,30 +1524,97 @@ export default function KaleidoColorLabPage() {
                   </span>
                 </p>
               </div>
+
+              {/* ── Always-On Magnifier (Image Color Picker refinement) ── */}
+              <div className="space-y-6">
+                <h3 className="text-black">
+                  Beta Update: Always-On Magnifier in Color Picker + Add 2 color
+                  codes
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {(
+                    [
+                      {
+                        src: "/kaleidocolorlab/color-picker1.webp",
+                        alt: "Color picker before",
+                        label: "Before",
+                      },
+                      {
+                        src: "/kaleidocolorlab/color-picker2.webp",
+                        alt: "Color picker after",
+                        label: "After",
+                      },
+                    ] as const
+                  ).map(({ src, alt, label }) => (
+                    <div key={src}>
+                      <div
+                        className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
+                        onClick={() => setZoomedImage(src)}
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          fill
+                          className="object-contain"
+                        />
+                        <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                          <Maximize2 className="w-4 h-4 text-black" />
+                        </div>
+                      </div>
+                      <p
+                        className="mt-2 text-center text-sm text-zinc-500"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-3 text-zinc-500 leading-relaxed">
+                  <p className="font-medium text-black">What I did:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-2">
+                    <li>
+                      Integrated a default magnifier into the color picker,
+                      allowing pixel‑perfect color sampling from any on‑screen
+                      element.
+                    </li>
+                    <li>
+                      Added HEX, HSL, and RGB color input options in the Image
+                      Color Picker.
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
+                  <p className="text-sm font-medium text-black">
+                    <span className="text-zinc-500">Impact: </span>No extra
+                    clicks – precise picking out of the box; Users can enter
+                    different color codes without third-party conversion.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* ─── Feature 2: Digital Color Lab ─── */}
-            <div className="flex flex-col items-center gap-12 md:flex-row-reverse">
-              <div className="w-full md:w-1/2 flex flex-col items-center">
-                <div className="mx-auto flex w-full max-w-70 sm:max-w-80 flex-col items-center relative group">
-                  <div className="w-full overflow-hidden rounded-3xl border-4 border-zinc-200 shadow-xl bg-black">
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full aspect-[9/16] object-cover"
-                    >
-                      <source
-                        src="/kaleidocolorlab/colorlab-colormix.webm"
-                        type="video/webm"
-                      />
-                      <source
-                        src="/kaleidocolorlab/colorlab-colormix.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
-                  </div>
+            <div className="flex flex-col gap-8">
+              <div className="w-full">
+                <div className="relative group">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
+                  >
+                    <source
+                      src="/kaleidocolorlab/colorlab-colormix.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/kaleidocolorlab/colorlab-colormix.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
                   <button
                     className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10"
                     onClick={() =>
@@ -1442,7 +1631,7 @@ export default function KaleidoColorLabPage() {
                   Feature 2 · Digital Color Lab
                 </p>
               </div>
-              <div className="w-full space-y-6 md:w-1/2">
+              <div className="w-full space-y-6">
                 <h3 className="text-black">
                   Feature 2 · Digital Color Lab：From Fear to Fearless
                 </h3>
@@ -1462,35 +1651,154 @@ export default function KaleidoColorLabPage() {
                   </span>
                 </p>
               </div>
+
+              {/* ── Beta Update: Enlarged Color area + Sortable Swatches ── */}
+              <div className="space-y-6">
+                <h3 className="text-black">
+                  Beta Update: Enlarged Color area + Sortable Swatches
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {(
+                    [
+                      {
+                        src: "/kaleidocolorlab/color-card1.webp",
+                        alt: "Color card before",
+                        label: "Before",
+                      },
+                      {
+                        src: "/kaleidocolorlab/color-card2.webp",
+                        alt: "Color card after",
+                        label: "After",
+                      },
+                    ] as const
+                  ).map(({ src, alt, label }) => (
+                    <div key={src}>
+                      <div
+                        className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
+                        onClick={() => setZoomedImage(src)}
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          fill
+                          className="object-contain"
+                        />
+                        <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                          <Maximize2 className="w-4 h-4 text-black" />
+                        </div>
+                      </div>
+                      <p
+                        className="mt-2 text-center text-sm text-zinc-500"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-3 text-zinc-500 leading-relaxed">
+                  <p className="font-medium text-black">What I did:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-2">
+                    <li>
+                      Changed circular swatches to full card-top color blocks –
+                      larger area for better color perception.
+                    </li>
+                    <li>
+                      Added a sorting filter to help users quickly locate target
+                      colors.
+                    </li>
+                  </ul>
+                </div>
+                <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
+                  <p className="text-sm font-medium text-black">
+                    <span className="text-zinc-500">Impact: </span>Faster
+                    selection, improved color recognition confidence.
+                  </p>
+                </div>
+              </div>
+
+              {/* ── Beta Update: Hybrid Mix Controls ── */}
+              <div className="space-y-6">
+                <h3 className="text-black">
+                  Beta Update: Hybrid Mix Controls – Slider + Input + Stepper
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {(
+                    [
+                      {
+                        src: "/kaleidocolorlab/color-mix1.webp",
+                        alt: "Color mix before",
+                        label: "Before",
+                      },
+                      {
+                        src: "/kaleidocolorlab/color-mix2.webp",
+                        alt: "Color mix after",
+                        label: "After",
+                      },
+                    ] as const
+                  ).map(({ src, alt, label }) => (
+                    <div key={src}>
+                      <div
+                        className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
+                        onClick={() => setZoomedImage(src)}
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          fill
+                          className="object-contain"
+                        />
+                        <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                          <Maximize2 className="w-4 h-4 text-black" />
+                        </div>
+                      </div>
+                      <p
+                        className="mt-2 text-center text-sm text-zinc-500"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        {label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-2 text-zinc-500 leading-relaxed">
+                  <p>
+                    <span className="font-medium text-black">What I did: </span>
+                    Kept the slider for rough adjustments. Added a manual number
+                    input for exact values, plus (+) and (−) buttons for
+                    step‑by‑step fine‑tuning.
+                  </p>
+                </div>
+                <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
+                  <p className="text-sm font-medium text-black">
+                    <span className="text-zinc-500">Impact: </span>Balances
+                    speed and precision; eliminates oversensitivity issues.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* ─── Feature 3: Data-Driven Dashboard ─── */}
             <div className="flex flex-col gap-8">
               <div className="w-full">
                 <div className="relative group">
-                  <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-zinc-200 shadow-2xl bg-white">
-                    <div className="flex h-8 w-full items-center gap-2 border-b-2 border-zinc-200 bg-zinc-100 px-3 shrink-0">
-                      <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-                    </div>
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full aspect-video object-cover"
-                    >
-                      <source
-                        src="/kaleidocolorlab/colorlab-dashboard.webm"
-                        type="video/webm"
-                      />
-                      <source
-                        src="/kaleidocolorlab/colorlab-dashboard.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
-                  </div>
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
+                  >
+                    <source
+                      src="/kaleidocolorlab/colorlab-dashboard.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/kaleidocolorlab/colorlab-dashboard.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
                   <button
                     className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10"
                     onClick={() =>
@@ -1507,17 +1815,17 @@ export default function KaleidoColorLabPage() {
                   Feature 3 · Data-Driven Dashboard
                 </p>
               </div>
-              <div className="w-full space-y-6 text-center">
+              <div className="w-full space-y-6">
                 <h3 className="text-black">
                   Feature 3 · Data-Driven Dashboard：From Blind to Bold
                 </h3>
-                <p className="text-center text-zinc-500 leading-relaxed">
+                <p className="text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">Pain Point:</span>{" "}
                   <span className="font-bold text-black">
                     Marketing lacked visibility into regional color trends.
                   </span>
                 </p>
-                <p className="text-center text-zinc-500 leading-relaxed">
+                <p className="text-zinc-500 leading-relaxed">
                   <span className="font-bold text-black">Solution:</span>{" "}
                   <span className="font-bold text-black">
                     An admin dashboard tracking saved user color preferences by
@@ -1576,8 +1884,14 @@ export default function KaleidoColorLabPage() {
                     <Maximize2 className="w-4 h-4 text-black" />
                   </div>
                 </div>
+                <span
+                  className="mt-3 inline-block text-xs bg-black text-white px-3 py-1 rounded-full"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  KaleidoColor didn&apos;t meet expected sales.
+                </span>
                 <p
-                  className="mt-3 text-center text-sm text-zinc-500"
+                  className="mt-2 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   User skepticism
@@ -1586,7 +1900,7 @@ export default function KaleidoColorLabPage() {
               <div className="w-full md:w-7/12">
                 <div className="bg-white p-8 rounded-2xl shadow-md border-2 border-zinc-200">
                   <h4 className="text-black mb-4">
-                    a hardware limitation we couldn&apos;t control.
+                    A hardware limitation we couldn&apos;t control.
                   </h4>
                   <p className="text-zinc-500 leading-relaxed text-lg">
                     Video Testing reported that{" "}
@@ -1602,33 +1916,32 @@ export default function KaleidoColorLabPage() {
               </div>
             </div>
 
+            {/* Tech Problem heading */}
+            <p className="text-center text-2xl md:text-3xl font-bold text-black">
+              Tech Problem: Different screens, different color display.
+            </p>
+
             {/* The UX Pivot（Feature 4） */}
             <div className="flex flex-col gap-8">
               <div className="w-full">
                 <div className="relative group">
-                  <div className="flex w-full flex-col overflow-hidden rounded-xl border-2 border-zinc-200 shadow-2xl bg-white">
-                    <div className="flex h-8 w-full items-center gap-2 border-b-2 border-zinc-200 bg-zinc-100 px-3 shrink-0">
-                      <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-                    </div>
-                    <video
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full aspect-video object-cover"
-                    >
-                      <source
-                        src="/kaleidocolorlab/colorlab-note.webm"
-                        type="video/webm"
-                      />
-                      <source
-                        src="/kaleidocolorlab/colorlab-note.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
-                  </div>
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
+                  >
+                    <source
+                      src="/kaleidocolorlab/colorlab-note.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/kaleidocolorlab/colorlab-note.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
                   <button
                     className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10"
                     onClick={() =>
@@ -1645,17 +1958,86 @@ export default function KaleidoColorLabPage() {
                   Feature 4 · Color Note
                 </p>
               </div>
-              <div className="w-full space-y-6 text-center">
+              <div className="w-full space-y-6">
                 <h3 className="text-black">
                   Feature 4 · Color Note：From Flaw to Feature
                 </h3>
-                <p className="text-center font-bold text-black leading-relaxed">
-                  I designed a personal color note feature that lets users
-                  document real-world mixing ratios and techniques, turning a
-                  screen accuracy limitation into a user personal color library.
+                <p className="text-zinc-500 leading-relaxed">
+                  <span className="font-bold text-black">Pain Point:</span>{" "}
+                  <span className="font-bold text-black">
+                    The same color looks different on different screens.
+                  </span>
+                </p>
+                <p className="text-zinc-500 leading-relaxed">
+                  <span className="font-bold text-black">Solution:</span>{" "}
+                  <span className="font-bold text-black">
+                    I designed a personal color note feature that lets users
+                    document real-world mixing ratios and techniques, turning a
+                    screen accuracy limitation into a user personal color
+                    library.
+                  </span>
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── User-Centered callout ── */}
+      <section className="w-full py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6">
+            <span
+              className="inline-block text-xs bg-black text-white px-3 py-1 rounded-full mb-3"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              User-Centered
+            </span>
+            <p className="text-lg text-black leading-relaxed font-bold">
+              Real user feedback made these improvements possible. We listened,
+              iterated, and delivered a more intuitive color experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Real Users. Real Feedback. animated banner ── */}
+      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            ref={storyRef5}
+            className="text-black font-bold leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.5,
+            }}
+          >
+            <span
+              className="story-word inline-block mr-[0.3em]"
+              style={{ opacity: 0 }}
+            >
+              Real
+            </span>
+            <span
+              className="story-word inline-block mr-[0.3em]"
+              style={{ opacity: 0 }}
+            >
+              Users.
+            </span>
+            <br />
+            <span
+              className="story-word inline-block mr-[0.3em]"
+              style={{ opacity: 0 }}
+            >
+              Real
+            </span>
+            <span
+              className="story-word inline-block mr-[0.3em]"
+              style={{ opacity: 0 }}
+            >
+              Feedback.
+            </span>
           </div>
         </div>
       </section>
@@ -1666,19 +2048,32 @@ export default function KaleidoColorLabPage() {
       <section id="usability-test" className="w-full py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p
-              className="text-sm uppercase tracking-wider text-zinc-500 mb-4"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              ── Beta Usability Test ──
-            </p>
-            <h2 className="text-black mb-4 text-4xl md:text-5xl font-extrabold">
-              Real Users. Real Feedback.
-            </h2>
             <p className="text-xl text-zinc-500 mt-6 max-w-3xl mx-auto leading-relaxed">
-              We invited real users to test the beta version and collected
-              structured feedback to validate our design decisions.
+              We believe the best tools are built with users, not just for them.
             </p>
+            <div className="mt-8">
+              <div
+                className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
+                onClick={() => setZoomedImage("/kaleidocolorlab/feedback.webp")}
+              >
+                <Image
+                  src="/kaleidocolorlab/feedback.webp"
+                  alt="Feedback Page"
+                  width={800}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                />
+                <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                  <Maximize2 className="w-4 h-4 text-black" />
+                </div>
+              </div>
+              <p
+                className="mt-3 text-center text-sm text-zinc-500"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Feedback Page
+              </p>
+            </div>
           </div>
 
           {/* Test images — side by side, fixed equal height with white fill */}
@@ -1751,7 +2146,7 @@ export default function KaleidoColorLabPage() {
           </div>
 
           {/* Report button */}
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <a
               href="/kaleidocolorlab/Kaleido%20ColorLab%20Usability%20Test%20Analysis%20Report.pdf"
               target="_blank"
@@ -1759,256 +2154,12 @@ export default function KaleidoColorLabPage() {
               className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-lg hover:bg-zinc-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              View research summary (desensitized)
+              <span className="flex flex-col items-center leading-tight">
+                <span>View User Feedback</span>
+                <span>(Desensitized)</span>
+              </span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════
-          POST-BETA UX REFINEMENTS
-          ═══════════════════════════════════════════════════════ */}
-      <section id="ux-refinements" className="w-full">
-        {/* Story banner heading */}
-        <div className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div
-              ref={storyRef5}
-              className="text-black font-bold leading-relaxed"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
-                lineHeight: 1.5,
-              }}
-            >
-              {storyWords5.map((word, i) => (
-                <span
-                  key={i}
-                  className="story-word inline-block mr-[0.3em]"
-                  style={{ opacity: 0 }}
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="space-y-20">
-            {/* ── Refinement 1: Enlarged Color area + Sortable Swatches ── */}
-            <div className="space-y-6">
-              {/* Title */}
-              <h3 className="text-black">
-                Enlarged Color area + Sortable Swatches
-              </h3>
-              {/* Images first with Before / After labels */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {(
-                  [
-                    {
-                      src: "/kaleidocolorlab/color-card1.webp",
-                      alt: "Color card before",
-                      label: "Before",
-                    },
-                    {
-                      src: "/kaleidocolorlab/color-card2.webp",
-                      alt: "Color card after",
-                      label: "After",
-                    },
-                  ] as const
-                ).map(({ src, alt, label }) => (
-                  <div key={src}>
-                    <div
-                      className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
-                      onClick={() => setZoomedImage(src)}
-                    >
-                      <Image
-                        src={src}
-                        alt={alt}
-                        fill
-                        className="object-contain"
-                      />
-                      <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                        <Maximize2 className="w-4 h-4 text-black" />
-                      </div>
-                    </div>
-                    <p
-                      className="mt-2 text-center text-sm text-zinc-500"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* What I did */}
-              <div className="space-y-3 text-zinc-500 leading-relaxed">
-                <p className="font-medium text-black">What I did:</p>
-                <ul className="list-disc list-inside space-y-2 ml-2">
-                  <li>
-                    Changed circular swatches to full card-top color blocks –
-                    larger area for better color perception.
-                  </li>
-                  <li>
-                    Added a sorting filter to help users quickly locate target
-                    colors.
-                  </li>
-                </ul>
-              </div>
-              {/* Impact */}
-              <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
-                <p className="text-sm font-medium text-black">
-                  <span className="text-zinc-500">Impact: </span>Faster
-                  selection, improved color recognition confidence.
-                </p>
-              </div>
-            </div>
-
-            {/* ── Refinement 2: Hybrid Mix Controls ── */}
-            <div className="space-y-6">
-              {/* Title */}
-              <h3 className="text-black">
-                Hybrid Mix Controls – Slider + Input + Stepper
-              </h3>
-              {/* Images first with Before / After labels */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {(
-                  [
-                    {
-                      src: "/kaleidocolorlab/color-mix1.webp",
-                      alt: "Color mix before",
-                      label: "Before",
-                    },
-                    {
-                      src: "/kaleidocolorlab/color-mix2.webp",
-                      alt: "Color mix after",
-                      label: "After",
-                    },
-                  ] as const
-                ).map(({ src, alt, label }) => (
-                  <div key={src}>
-                    <div
-                      className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
-                      onClick={() => setZoomedImage(src)}
-                    >
-                      <Image
-                        src={src}
-                        alt={alt}
-                        fill
-                        className="object-contain"
-                      />
-                      <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                        <Maximize2 className="w-4 h-4 text-black" />
-                      </div>
-                    </div>
-                    <p
-                      className="mt-2 text-center text-sm text-zinc-500"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* What I did */}
-              <div className="space-y-2 text-zinc-500 leading-relaxed">
-                <p>
-                  <span className="font-medium text-black">What I did: </span>
-                  Kept the slider for rough adjustments. Added a manual number
-                  input for exact values, plus (+) and (−) buttons for
-                  step‑by‑step fine‑tuning.
-                </p>
-              </div>
-              {/* Impact */}
-              <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
-                <p className="text-sm font-medium text-black">
-                  <span className="text-zinc-500">Impact: </span>Balances speed
-                  and precision; eliminates oversensitivity issues.
-                </p>
-              </div>
-            </div>
-
-            {/* ── Refinement 3: Always-On Magnifier ── */}
-            <div className="space-y-6">
-              {/* Title */}
-              <h3 className="text-black">
-                Always-On Magnifier in Color Picker
-              </h3>
-              {/* Images first with Before / After labels */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {(
-                  [
-                    {
-                      src: "/kaleidocolorlab/color-picker1.webp",
-                      alt: "Color picker before",
-                      label: "Before",
-                    },
-                    {
-                      src: "/kaleidocolorlab/color-picker2.webp",
-                      alt: "Color picker after",
-                      label: "After",
-                    },
-                  ] as const
-                ).map(({ src, alt, label }) => (
-                  <div key={src}>
-                    <div
-                      className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#1a1a1a] aspect-[4/3]"
-                      onClick={() => setZoomedImage(src)}
-                    >
-                      <Image
-                        src={src}
-                        alt={alt}
-                        fill
-                        className="object-contain"
-                      />
-                      <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                        <Maximize2 className="w-4 h-4 text-black" />
-                      </div>
-                    </div>
-                    <p
-                      className="mt-2 text-center text-sm text-zinc-500"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* What I did */}
-              <div className="space-y-2 text-zinc-500 leading-relaxed">
-                <p>
-                  <span className="font-medium text-black">What I did: </span>
-                  Integrated a default magnifier into the color picker, allowing
-                  pixel‑perfect color sampling from any on‑screen element.
-                </p>
-              </div>
-              {/* Impact */}
-              <div className="bg-[#F8F4EF] border-l-4 border-secondary rounded-r-2xl p-4">
-                <p className="text-sm font-medium text-black">
-                  <span className="text-zinc-500">Impact: </span>No extra clicks
-                  – precise picking out of the box.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* User-Centered callout */}
-          <div className="mt-16 bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6">
-            <span
-              className="inline-block text-xs bg-black text-white px-3 py-1 rounded-full mb-3"
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              User-Centered
-            </span>
-            <p className="text-lg text-black leading-relaxed font-bold">
-              Real user feedback made these improvements possible. We listened,
-              iterated, and delivered a more intuitive color experience.
-            </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -2111,7 +2262,7 @@ export default function KaleidoColorLabPage() {
               <Heart className="w-5 h-5" />
             </Link>
             <a
-              href="https://gaahleri-color.cleme.store/"
+              href="https://www.kaleidocolorlab.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-black text-white px-10 py-5 rounded-lg hover:bg-zinc-800 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
@@ -2119,7 +2270,7 @@ export default function KaleidoColorLabPage() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              Explore ColorLab
+              Explore Kaleido ColorLab
             </a>
           </div>
         </div>

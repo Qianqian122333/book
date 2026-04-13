@@ -621,7 +621,7 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  before: product-center
+                  Before: Product-Center
                 </p>
               </div>
               <div className="flex flex-col">
@@ -651,7 +651,7 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  after: build a community culture
+                  After: Build a Community Culture
                 </p>
               </div>
             </div>
@@ -740,13 +740,6 @@ export default function GaahleriCommunityPage() {
                     >
                       24k
                     </div>
-                    <div
-                      className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      <Users className="w-3 h-3 shrink-0" />
-                      Users face similar problems
-                    </div>
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
                     </div>
@@ -787,13 +780,6 @@ export default function GaahleriCommunityPage() {
                       style={{ fontFamily: "var(--font-body)" }}
                     >
                       6k
-                    </div>
-                    <div
-                      className="absolute bottom-3 left-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      <Users className="w-3 h-3 shrink-0" />
-                      Users need 3D models &amp; our product to solve problems
                     </div>
                     <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                       <Maximize2 className="w-4 h-4 text-black" />
