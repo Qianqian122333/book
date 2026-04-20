@@ -804,6 +804,12 @@ export default function KaleidoColorLabPage() {
               height={675}
               className="w-full h-auto rounded-2xl mt-6 border-2 border-zinc-300"
             />
+            <p
+              className="text-center text-sm text-zinc-500 mt-3"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              KaleidoColor didn&apos;t meet expected sales.
+            </p>
           </div>
 
           {/* Solution */}
@@ -1888,7 +1894,7 @@ export default function KaleidoColorLabPage() {
                   className="mt-3 inline-block text-xs bg-black text-white px-3 py-1 rounded-full"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  KaleidoColor didn&apos;t meet expected sales.
+                  Different screens, different color display
                 </span>
                 <p
                   className="mt-2 text-center text-sm text-zinc-500"
@@ -2143,6 +2149,27 @@ export default function KaleidoColorLabPage() {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* Result image — Color Sales Rose */}
+          <div className="mt-12">
+            <Image
+              src="/kaleidocolorlab/result.webp"
+              alt="Color product sales surged 227%"
+              width={1200}
+              height={800}
+              className="w-full h-auto rounded-2xl border-2 border-zinc-300"
+            />
+            <p
+              className="mt-3 text-center text-sm text-zinc-500"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Color Sales Rose
+            </p>
+            <p className="mt-6 text-lg text-zinc-500 text-center">
+              Our color product sales surged{" "}
+              <span className="text-6xl font-extrabold text-black">227%</span>.
+            </p>
           </div>
 
           {/* Report button */}
