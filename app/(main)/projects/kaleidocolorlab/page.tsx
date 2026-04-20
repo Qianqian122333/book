@@ -2133,7 +2133,7 @@ export default function KaleidoColorLabPage() {
                 label: "Detailed Feedback",
                 Icon: FileText,
               },
-              { stat: "4.03 / 5", label: "Average Rating", Icon: Star },
+              { stat: "4/5", label: "Average Rating", Icon: Star },
               {
                 stat: "77.3%",
                 label: "Easy to Use",
