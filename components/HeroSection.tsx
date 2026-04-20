@@ -88,7 +88,7 @@ export default function HeroSection() {
     >
       <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-x-8">
         {/* Left column: title at bottom */}
-        <div className="flex flex-col justify-end">
+        <div className="flex flex-col justify-end mb-8 md:mb-0">
           <h1 className="font-semibold tracking-tighter text-left text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-[1.16]">
             {titleWords.map((word, i) => (
               <span key={word} className="block overflow-hidden">

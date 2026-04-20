@@ -127,21 +127,21 @@ export default function CoverPage() {
             alt="Qianqian's Book"
             width={400}
             height={560}
-            className="rounded-lg max-w-[80vw] h-auto transition-transform duration-300 hover:rotate-2"
+            className="rounded-lg max-w-[55vw] sm:max-w-[80vw] h-auto transition-transform duration-300 hover:rotate-2"
             priority
           />
         </div>
       </div>
       <div
         ref={textRef}
-        className="mt-14 text-center space-y-5"
+        className="mt-6 sm:mt-14 text-center space-y-3 sm:space-y-5"
         style={{ opacity: 0 }}
       >
-        <p className="text-xl sm:text-2xl font-medium tracking-wide text-zinc-700 inline-flex items-center gap-1.5">
+        <p className="text-xl sm:text-2xl font-medium tracking-wide text-zinc-700">
           You&apos;ve discovered{" "}
           <button
             onClick={toggleQianqian}
-            className="inline-flex items-center hover:text-zinc-500 transition-colors cursor-pointer"
+            className="inline-flex items-center align-middle hover:text-zinc-500 transition-colors cursor-pointer"
             aria-label="Play pronunciation of Qianqian"
           >
             {isQianqianPlaying ? (
@@ -149,7 +149,7 @@ export default function CoverPage() {
             ) : (
               <Volume2 className="w-5 h-5" />
             )}
-          </button>
+          </button>{" "}
           Qianqian&apos;s book.
         </p>
         <p className="text-xl sm:text-2xl font-medium tracking-wide text-zinc-500">

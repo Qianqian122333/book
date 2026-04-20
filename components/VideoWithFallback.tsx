@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface VideoWithFallbackProps {
@@ -22,6 +22,38 @@ export default function VideoWithFallback({
 }: VideoWithFallbackProps) {
   const [videoFailed, setVideoFailed] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || videoFailed) return;
+
+    // iOS Safari: try to trigger play programmatically
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // autoplay blocked — keep showing poster
+      });
+    };
+
+    const onReady = () => setVideoReady(true);
+
+    video.addEventListener("loadeddata", onReady);
+    video.addEventListener("playing", onReady);
+    video.addEventListener("canplay", onReady);
+
+    // If already loaded (cached), mark ready
+    if (video.readyState >= 2) {
+      setVideoReady(true);
+    } else {
+      tryPlay();
+    }
+
+    return () => {
+      video.removeEventListener("loadeddata", onReady);
+      video.removeEventListener("playing", onReady);
+      video.removeEventListener("canplay", onReady);
+    };
+  }, [videoFailed]);
 
   return (
     <>
@@ -36,13 +68,14 @@ export default function VideoWithFallback({
       {/* Video — invisible until ready, then fades in over the image */}
       {!videoFailed && (
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           poster={poster}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
-          onCanPlay={() => setVideoReady(true)}
           onError={() => setVideoFailed(true)}
         >
           {webmSrc && <source src={webmSrc} type="video/webm" />}

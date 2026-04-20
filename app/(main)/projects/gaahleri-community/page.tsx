@@ -117,6 +117,14 @@ const storyWords4 = [
 /* ─── Contest Intro Video with fallback image ─── */
 function ContestIntroVideo({ className = "" }: { className?: string }) {
   const [failed, setFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || failed) return;
+    video.play().catch(() => {});
+  }, [failed]);
+
   if (failed) {
     return (
       <Image
@@ -130,10 +138,12 @@ function ContestIntroVideo({ className = "" }: { className?: string }) {
   }
   return (
     <video
+      ref={videoRef}
       autoPlay
       muted
       loop
       playsInline
+      preload="auto"
       poster="/comminity/contest%20intro%20page.webp"
       className={`w-full block ${className}`}
       onError={() => setFailed(true)}
@@ -609,12 +619,22 @@ export default function GaahleriCommunityPage() {
           ═══════════════════════════════════════════════════════ */}
       <section id="overview" className="w-full">
         <div className="relative w-full">
+          {/* Desktop image */}
           <Image
             src="/comminity/comminity-hero.webp"
             alt="Gaahleri Community Hero"
             width={1920}
             height={1080}
-            className="h-auto w-full"
+            className="hidden md:block h-auto w-full"
+            priority
+          />
+          {/* Mobile image */}
+          <Image
+            src="/comminity/community-hero-mobile.webp"
+            alt="Gaahleri Community Hero"
+            width={1080}
+            height={1350}
+            className="block md:hidden h-auto w-full"
             priority
           />
         </div>
@@ -1775,23 +1795,27 @@ export default function GaahleriCommunityPage() {
               <h3 className="text-black">Competition Background</h3>
             </div>
             <ul className="ml-9 space-y-3 list-none">
-              <li className="flex items-start gap-2 text-lg text-zinc-500 leading-relaxed">
+              <li className="text-lg text-zinc-500 leading-relaxed flex items-start gap-2">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
-                Halloween and Christmas taught us that giving users a{" "}
-                <span className="font-bold text-black">
-                  &ldquo;reason to create&rdquo;
-                </span>{" "}
-                drives engagement.
-              </li>
-              <li className="flex items-start gap-2 text-lg text-zinc-500 leading-relaxed">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
-                But{" "}
-                <span className="font-bold text-black">
-                  seasonal spikes don&apos;t build lasting communities
+                <span>
+                  Halloween and Christmas taught us that giving users a{" "}
+                  <span className="font-bold text-black">
+                    &ldquo;reason to create&rdquo;
+                  </span>{" "}
+                  drives engagement.
                 </span>
-                .
               </li>
-              <li className="flex items-start gap-2 text-lg leading-relaxed">
+              <li className="text-lg text-zinc-500 leading-relaxed flex items-start gap-2">
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
+                <span>
+                  But{" "}
+                  <span className="font-bold text-black">
+                    seasonal spikes don&apos;t build lasting communities
+                  </span>
+                  .
+                </span>
+              </li>
+              <li className="text-lg leading-relaxed flex items-start gap-2">
                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-black shrink-0" />
                 <span className="font-bold text-black">
                   We scaled the insight into GWCC: a model competition designed

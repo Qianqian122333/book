@@ -593,6 +593,7 @@ export default function KaleidoColorLabPage() {
           muted
           loop
           playsInline
+          preload="auto"
           poster="/kaleidocolorlab/poster.webp"
           className="w-full block"
         >
@@ -1242,6 +1243,7 @@ export default function KaleidoColorLabPage() {
                     loop
                     muted
                     playsInline
+                    preload="auto"
                     className="w-full h-full object-contain"
                   >
                     <source
@@ -1484,6 +1486,7 @@ export default function KaleidoColorLabPage() {
                     muted
                     playsInline
                     controls
+                    preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
@@ -1610,6 +1613,7 @@ export default function KaleidoColorLabPage() {
                     muted
                     playsInline
                     controls
+                    preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
@@ -1794,6 +1798,7 @@ export default function KaleidoColorLabPage() {
                     muted
                     playsInline
                     controls
+                    preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
@@ -1937,6 +1942,7 @@ export default function KaleidoColorLabPage() {
                     muted
                     playsInline
                     controls
+                    preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
@@ -2280,7 +2286,7 @@ export default function KaleidoColorLabPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-white border-2 border-zinc-300 text-black px-10 py-5 rounded-lg hover:bg-zinc-100 transition-all transform hover:-translate-y-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border-2 border-zinc-300 text-black px-10 py-5 rounded-lg hover:bg-zinc-100 transition-all transform hover:-translate-y-1"
               style={{
                 fontFamily: "var(--font-body)",
               }}
@@ -2292,7 +2298,7 @@ export default function KaleidoColorLabPage() {
               href="https://www.kaleidocolorlab.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-black text-white px-10 py-5 rounded-lg hover:bg-zinc-800 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-black text-white px-10 py-5 rounded-lg hover:bg-zinc-800 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               style={{
                 fontFamily: "var(--font-body)",
               }}
