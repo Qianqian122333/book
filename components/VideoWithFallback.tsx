@@ -5,7 +5,6 @@ import Image from "next/image";
 
 interface VideoWithFallbackProps {
   videoSrc: string;
-  webmSrc?: string;
   fallbackSrc: string;
   alt: string;
   className?: string;
@@ -14,7 +13,6 @@ interface VideoWithFallbackProps {
 
 export default function VideoWithFallback({
   videoSrc,
-  webmSrc,
   fallbackSrc,
   alt,
   className,
@@ -28,27 +26,32 @@ export default function VideoWithFallback({
     const video = videoRef.current;
     if (!video || videoFailed) return;
 
-    // iOS Safari: try to trigger play programmatically
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // autoplay blocked — keep showing poster
-      });
-    };
-
     const onReady = () => setVideoReady(true);
 
     video.addEventListener("loadeddata", onReady);
     video.addEventListener("playing", onReady);
     video.addEventListener("canplay", onReady);
 
-    // If already loaded (cached), mark ready
+    // If already loaded (cached), mark ready immediately
     if (video.readyState >= 2) {
       setVideoReady(true);
-    } else {
-      tryPlay();
     }
 
+    // iOS Safari: try to trigger play programmatically
+    video.play().catch(() => {
+      // autoplay blocked — keep showing poster
+    });
+
+    // Safety timeout: if video hasn't loaded after 8s, reload it
+    const timeout = setTimeout(() => {
+      if (!video.readyState || video.readyState < 2) {
+        video.load();
+        video.play().catch(() => {});
+      }
+    }, 8000);
+
     return () => {
+      clearTimeout(timeout);
       video.removeEventListener("loadeddata", onReady);
       video.removeEventListener("playing", onReady);
       video.removeEventListener("canplay", onReady);
@@ -78,7 +81,6 @@ export default function VideoWithFallback({
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
           onError={() => setVideoFailed(true)}
         >
-          {webmSrc && <source src={webmSrc} type="video/webm" />}
           <source src={videoSrc} type="video/mp4" />
         </video>
       )}

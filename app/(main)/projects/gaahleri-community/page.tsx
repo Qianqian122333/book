@@ -148,7 +148,6 @@ function ContestIntroVideo({ className = "" }: { className?: string }) {
       className={`w-full block ${className}`}
       onError={() => setFailed(true)}
     >
-      <source src="/comminity/contest%20intro%20page.webm" type="video/webm" />
       <source src="/comminity/contest%20intro%20page.mp4" type="video/mp4" />
     </video>
   );

@@ -69,7 +69,6 @@ export default function Home() {
             <Link href={projects[0].href} className="group block">
               <div className="relative aspect-2/1 w-full overflow-hidden rounded-lg bg-zinc-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
                 <VideoWithFallback
-                  webmSrc="/kaleidocolorlab/colorlab-hero-video.webm"
                   videoSrc="/kaleidocolorlab/colorlab-hero-video.mp4"
                   fallbackSrc="/kaleidocolorlab/poster.webp"
                   poster="/kaleidocolorlab/poster.webp"

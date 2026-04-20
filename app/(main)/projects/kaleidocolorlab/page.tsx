@@ -509,7 +509,6 @@ export default function KaleidoColorLabPage() {
               autoPlay
               className="w-full max-h-[85vh] rounded-xl object-contain bg-black"
             >
-              <source src={`${zoomedVideo}.webm`} type="video/webm" />
               <source src={`${zoomedVideo}.mp4`} type="video/mp4" />
             </video>
           </div>
@@ -597,10 +596,6 @@ export default function KaleidoColorLabPage() {
           poster="/kaleidocolorlab/poster.webp"
           className="w-full block"
         >
-          <source
-            src="/kaleidocolorlab/colorlab-hero-video.webm"
-            type="video/webm"
-          />
           <source
             src="/kaleidocolorlab/colorlab-hero-video.mp4"
             type="video/mp4"
@@ -851,10 +846,6 @@ export default function KaleidoColorLabPage() {
                     preload="auto"
                     className="absolute inset-0 w-full h-full object-cover"
                   >
-                    <source
-                      src="/kaleidocolorlab/colorlab intro.webm"
-                      type="video/webm"
-                    />
                     <source
                       src="/kaleidocolorlab/colorlab intro.mp4"
                       type="video/mp4"
@@ -1247,10 +1238,6 @@ export default function KaleidoColorLabPage() {
                     className="w-full h-full object-contain"
                   >
                     <source
-                      src="/kaleidocolorlab/colorlab-prototype.webm"
-                      type="video/webm"
-                    />
-                    <source
                       src="/kaleidocolorlab/colorlab-prototype.mp4"
                       type="video/mp4"
                     />
@@ -1490,10 +1477,6 @@ export default function KaleidoColorLabPage() {
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
-                      src="/kaleidocolorlab/colorlab-picker.webm"
-                      type="video/webm"
-                    />
-                    <source
                       src="/kaleidocolorlab/colorlab-picker.mp4"
                       type="video/mp4"
                     />
@@ -1616,10 +1599,6 @@ export default function KaleidoColorLabPage() {
                     preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
-                    <source
-                      src="/kaleidocolorlab/colorlab-colormix.webm"
-                      type="video/webm"
-                    />
                     <source
                       src="/kaleidocolorlab/colorlab-colormix.mp4"
                       type="video/mp4"
@@ -1802,10 +1781,6 @@ export default function KaleidoColorLabPage() {
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
                     <source
-                      src="/kaleidocolorlab/colorlab-dashboard.webm"
-                      type="video/webm"
-                    />
-                    <source
                       src="/kaleidocolorlab/colorlab-dashboard.mp4"
                       type="video/mp4"
                     />
@@ -1945,10 +1920,6 @@ export default function KaleidoColorLabPage() {
                     preload="auto"
                     className="w-full aspect-video object-cover rounded-xl border-2 border-zinc-300"
                   >
-                    <source
-                      src="/kaleidocolorlab/colorlab-note.webm"
-                      type="video/webm"
-                    />
                     <source
                       src="/kaleidocolorlab/colorlab-note.mp4"
                       type="video/mp4"

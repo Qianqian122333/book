@@ -277,7 +277,6 @@ export default function AventusAirbrushPage() {
               autoPlay
               className="w-full max-h-[85vh] rounded-xl object-contain bg-black"
             >
-              <source src={`${zoomedVideo}.webm`} type="video/webm" />
               <source src={`${zoomedVideo}.mp4`} type="video/mp4" />
             </video>
           </div>
@@ -816,10 +815,6 @@ export default function AventusAirbrushPage() {
                 className="w-full aspect-video object-cover"
               >
                 <source
-                  src="/aventus-airbrush/aventus-tailor.webm"
-                  type="video/webm"
-                />
-                <source
                   src="/aventus-airbrush/aventus-tailor.mp4"
                   type="video/mp4"
                 />
@@ -872,10 +867,6 @@ export default function AventusAirbrushPage() {
                 preload="auto"
                 className="w-full aspect-video object-cover"
               >
-                <source
-                  src="/aventus-airbrush/aventus-general.webm"
-                  type="video/webm"
-                />
                 <source
                   src="/aventus-airbrush/aventus-general.mp4"
                   type="video/mp4"
@@ -1080,10 +1071,6 @@ export default function AventusAirbrushPage() {
                 className="w-full aspect-video object-cover"
               >
                 <source
-                  src="/aventus-airbrush/aventus-uiupdate.webm"
-                  type="video/webm"
-                />
-                <source
                   src="/aventus-airbrush/aventus-uiupdate.mp4"
                   type="video/mp4"
                 />
@@ -1197,10 +1184,6 @@ export default function AventusAirbrushPage() {
                 preload="auto"
                 className="w-full aspect-video object-cover"
               >
-                <source
-                  src="/aventus-airbrush/aventus-blackwhite.webm"
-                  type="video/webm"
-                />
                 <source
                   src="/aventus-airbrush/aventus-blackwhite.mp4"
                   type="video/mp4"
