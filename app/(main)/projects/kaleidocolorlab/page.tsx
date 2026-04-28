@@ -39,15 +39,7 @@ const techStack = [
 
 /* ─── Story heading words ─── */
 const storyWords = [
-  "I",
-  "designed",
-  "and",
-  "developed",
-  "the",
-  "color",
-  "website",
-  "to",
-  "integrate",
+  "Integrate",
   "our",
   "product",
   "into",
@@ -527,10 +519,10 @@ export default function KaleidoColorLabPage() {
 
           {/* Description — centered, updated copy */}
           <p className="text-lg text-zinc-500 leading-relaxed text-center max-w-3xl mx-auto">
-            Kaleido ColorLab bridges the gap between inspiration and purchase.
-            Users extract colors from photos to create custom palettes, while
-            admins gain insights into user preferences and buying behavior to
-            optimize inventory.
+            Kaleido ColorLab bridges the gap between color inspiration and
+            purchase. Users extract colors from photos to create custom
+            palettes, while admins gain insights into user preferences and
+            buying behavior to direct their product development.
           </p>
         </div>
       </section>
@@ -1010,7 +1002,7 @@ export default function KaleidoColorLabPage() {
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
                 <h3 className="text-2xl font-bold text-black">
-                  Feature 1 · Image Color Picker：From Pain Point to Profit
+                  Feature 1 · Image Color Picker: From Pain Point to Profit
                 </h3>
               </div>
               <div className="w-full">
@@ -1052,14 +1044,14 @@ export default function KaleidoColorLabPage() {
                 </p>
                 <p className="text-zinc-500 leading-relaxed">
                   Solution: Instant color extraction that recommends the closest
-                  matching paint or a custom mixing recipe.
+                  matching color or a custom mixing recipe.
                 </p>
               </div>
 
               {/* ── Always-On Magnifier (Image Color Picker refinement) ── */}
               <div className="space-y-6">
                 <p className="text-zinc-500 leading-relaxed">
-                  Beta Update: Always-On Magnifier in Color Picker； Let users
+                  Beta Update: Always-On Magnifier in Color Picker; Let users
                   choose the color codes (HEX, RGB, HSL)
                 </p>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -1108,7 +1100,7 @@ export default function KaleidoColorLabPage() {
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
                 <h3 className="text-2xl font-bold text-black">
-                  Feature 2 · Digital Color Lab：From Fear to Fearless
+                  Feature 2 · Digital Color Lab: From Fear to Fearless
                 </h3>
               </div>
               <div className="w-full">
@@ -1145,8 +1137,8 @@ export default function KaleidoColorLabPage() {
               </div>
               <div className="w-full space-y-6">
                 <p className="text-zinc-500 leading-relaxed">
-                  Pain Point: Fear of wasting expensive material on failed
-                  mixing attempts.
+                  Pain Point: Fear of wasting expensive colors on failed mixing
+                  attempts.
                 </p>
                 <p className="text-zinc-500 leading-relaxed">
                   Solution: A digital sandbox to test ratios before physical
@@ -1264,7 +1256,7 @@ export default function KaleidoColorLabPage() {
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
                 <h3 className="text-2xl font-bold text-black">
-                  Feature 3 · Data-Driven Dashboard：From Blind to Bold
+                  Feature 3 · Data-Driven Dashboard: From Blind to Bold
                 </h3>
               </div>
               <div className="w-full">
@@ -1301,12 +1293,14 @@ export default function KaleidoColorLabPage() {
               </div>
               <div className="w-full space-y-6">
                 <p className="text-zinc-500 leading-relaxed">
-                  Pain Point: Marketing lacked visibility into regional color
-                  trends.
+                  Pain Point: The admin needs to easily update color
+                  collections, manage color mixing formulas, and track user
+                  preferences and purchase behavior.
                 </p>
                 <p className="text-zinc-500 leading-relaxed">
-                  Solution: An admin dashboard tracking saved user color
-                  preferences by region, enabling data-driven decisions.
+                  Solution: A dashboard lets admins update color collections,
+                  manage mixing formulas, track user preferences and purchase
+                  behavior with filters by region and time.
                 </p>
               </div>
             </div>
@@ -1324,7 +1318,7 @@ export default function KaleidoColorLabPage() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-black mb-8">
-              Feature 4 · Color Note：From Flaw to Feature
+              Feature 4 · Color Note: From Flaw to Feature
             </h3>
           </div>
 
@@ -1457,7 +1451,7 @@ export default function KaleidoColorLabPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Behind the Design */}
           <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold text-black">
+            <h2 className="text-4xl font-bold text-black">
               — Behind the Design —
             </h2>
           </div>
@@ -1537,8 +1531,8 @@ export default function KaleidoColorLabPage() {
                     If we do, we lead the industry.
                   </h4>
                   <p className="text-zinc-500 leading-relaxed">
-                    No competitor at our level has built something similar —
-                    this is a blue ocean. Being first means industry leadership.
+                    No competitor at our level has built something similar.
+                    Being first means industry leadership.
                   </p>
                 </div>
               </div>
@@ -1770,7 +1764,7 @@ export default function KaleidoColorLabPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <p className="text-xl text-zinc-500 mt-6 max-w-3xl mx-auto leading-relaxed">
-              We believe the best tools are built with users, not just for them.
+              Good design is building tools with users, not just for them.
             </p>
             <div className="mt-8">
               <div
@@ -1945,17 +1939,17 @@ export default function KaleidoColorLabPage() {
               {
                 Icon: Code2,
                 title: "Coding Mindset",
-                body: "Great designers aren't limited by tools. Code is my medium; AI is my efficiency multiplier.",
+                body: "Code as Validation. Functional prototyping validates technical feasibility early, reducing project risk and aligning design with engineering reality.",
               },
               {
                 Icon: Target,
-                title: "User-Centered",
-                body: "UX balances user needs with business viability. By uncovering real user needs, I created a new revenue engine.",
+                title: "Stakeholder Strategy",
+                body: 'Alignment via Empathy. Treating stakeholders as a "user group" helps resolve business concerns through data-backed transparency and collaborative goals.',
               },
               {
                 Icon: BarChart2,
-                title: "Business Acumen",
-                body: "It's not just about executing requirements — it's about aligning with stakeholders to ensure we're always investing in the right direction.",
+                title: "Design Opportunity",
+                body: "Reframing Constraints. Technical limits and user skepticism are design signals. Reframing these hurdles reveals the most impactful opportunities for innovation.",
               },
             ].map((item) => (
               <div

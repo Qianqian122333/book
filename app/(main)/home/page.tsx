@@ -34,17 +34,20 @@ const skills = [
 const projects = [
   {
     name: "Kaleido ColorLab",
-    desc: "UX Design & Full-stack Development",
+    desc: "Design and build a digital color tool from 0 to 1.",
+    title: "UX Designer & Full-Stack Developer",
     href: "/projects/kaleidocolorlab",
   },
   {
     name: "Gaahleri Community",
-    desc: "UX Design & Front-end Development",
+    desc: "Turn a buy-and-leave e-commerce store into a hobby community.",
+    title: "UX Designer & Front-End Developer",
     href: "/projects/gaahleri-community",
   },
   {
     name: "Aventus Airbrush",
-    desc: "UX Design & Front-end Development",
+    desc: "Design and build product pages under technical constraints.",
+    title: "UX Designer & Front-End Developer",
     href: "/projects/aventus-airbrush",
   },
 ];
@@ -77,12 +80,10 @@ export default function Home() {
                 />
               </div>
               <div className="mt-5 space-y-1">
-                <h4 className="text-xs font-bold uppercase tracking-tight">
+                <h4 className="text-sm font-bold uppercase">
                   {projects[0].name}
                 </h4>
-                <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                  {projects[0].desc}
-                </p>
+                <p className="text-xs text-zinc-500 ">{projects[0].desc}</p>
               </div>
             </Link>
 
@@ -109,12 +110,10 @@ export default function Home() {
                       />
                     </div>
                     <div className="mt-4 space-y-1">
-                      <h4 className="text-xs font-bold uppercase tracking-tight">
+                      <h4 className="text-sm font-bold uppercase">
                         {proj.name}
                       </h4>
-                      <p className="text-[9px] text-zinc-500 uppercase tracking-tighter">
-                        {proj.desc}
-                      </p>
+                      <p className="text-xs text-zinc-500">{proj.desc}</p>
                     </div>
                   </Link>
                 );
@@ -141,7 +140,7 @@ export default function Home() {
                 <div className="w-full">
                   <h3 className="text-xl font-semibold mb-4">{skill.title}</h3>
                   <hr className="border-zinc-300" />
-                  <div className="mt-4 flex justify-end text-right text-[10px] text-zinc-500 sm:text-xs">
+                  <div className="mt-4 flex justify-end text-right text-xs text-zinc-500 sm:text-xs">
                     <p>{skill.desc}</p>
                   </div>
                 </div>
