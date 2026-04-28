@@ -37,8 +37,8 @@ const techStack = [
   { icon: "/sql.svg", label: "SQL" },
 ];
 
-/* ─── Story heading words ─── */
-const storyWords = [
+/* ─── Story banner: Integrate our product into the user's journey ─── */
+const storyWordsIntegrate = [
   "Integrate",
   "our",
   "product",
@@ -48,11 +48,18 @@ const storyWords = [
   "journey.",
 ];
 
-/* \u2014 Story heading 7 words (moved inside section 2) \u2014 */
-const storyWords7 = ["I", "Discovered", "Real", "User", "Pain", "Points"];
+/* ─── Story banner: I Discovered Real User Pain Points ─── */
+const storyWordsDiscovery = [
+  "I",
+  "Discovered",
+  "Real",
+  "User",
+  "Pain",
+  "Points",
+];
 
-/* ─── Story heading 3 words (between Section 2 & 3) ─── */
-const storyWords3 = [
+/* ─── Story banner: I turn stakeholder skepticism into #1 priority ─── */
+const storyWordsStakeholder = [
   "I",
   "turn",
   "stakeholder",
@@ -65,8 +72,8 @@ const storyWords3 = [
   "project.",
 ];
 
-/* ─── Story heading 2 words ─── */
-const storyWords2 = [
+/* ─── Story banner: Final Version — four core features ─── */
+const storyWordsFinalVersion = [
   "Final",
   "Version:",
   "I",
@@ -76,6 +83,21 @@ const storyWords2 = [
   "four",
   "core",
   "features.",
+];
+
+/* ─── Story banner: Good design is building tools with users ─── */
+const storyWordsRealUsers = [
+  "Good",
+  "design",
+  "is",
+  "building",
+  "tools",
+  "with",
+  "users,",
+  "not",
+  "just",
+  "for",
+  "them.",
 ];
 
 /* ─── Placeholder for missing video/image ─── */
@@ -578,19 +600,19 @@ export default function KaleidoColorLabPage() {
                 <User className="w-7 h-7 text-black" />
               </div>
               <p
-                className="font-bold text-black mb-2"
+                className="text-lg font-bold text-black mb-2"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Role
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 UX Designer
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Full-stack Developer
@@ -601,13 +623,13 @@ export default function KaleidoColorLabPage() {
                 <Clock className="w-7 h-7 text-black" />
               </div>
               <p
-                className="font-bold text-black mb-2"
+                className="text-lg font-bold text-black mb-2"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Duration
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Nov 2025 – Apr 2026
@@ -618,25 +640,25 @@ export default function KaleidoColorLabPage() {
                 <Users className="w-7 h-7 text-black" />
               </div>
               <p
-                className="font-bold text-black mb-2"
+                className="text-lg font-bold text-black mb-2"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Collaboration
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Backend Developer
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Marketing Team
               </p>
               <p
-                className="text-black"
+                className="text-base text-black"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 Product Team
@@ -660,7 +682,7 @@ export default function KaleidoColorLabPage() {
                     className="h-8 w-auto"
                   />
                   <span
-                    className="text-xs font-bold tracking-wide text-zinc-500"
+                    className="text-sm font-bold tracking-wide text-zinc-500"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     {tech.label}
@@ -699,7 +721,7 @@ export default function KaleidoColorLabPage() {
               lineHeight: 1.5,
             }}
           >
-            {storyWords.map((word, i) => (
+            {storyWordsIntegrate.map((word, i) => (
               <span
                 key={i}
                 className="story-word inline-block mr-[0.3em]"
@@ -720,14 +742,14 @@ export default function KaleidoColorLabPage() {
           {/* Challenge */}
           <div className="mt-10 mb-16">
             <div className="flex items-center gap-3 mb-2">
-              <Target className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">The Challenge</h3>
+              <Target className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">The Challenge</h3>
             </div>
             <ul className="ml-10 mt-3 space-y-2 list-disc list-inside">
-              <li className="text-lg text-zinc-500 leading-relaxed">
+              <li className="text-base text-zinc-500 leading-relaxed">
                 KaleidoColor didn&apos;t meet expected sales.
               </li>
-              <li className="text-lg text-zinc-500 leading-relaxed">
+              <li className="text-base text-zinc-500 leading-relaxed">
                 Stakeholders wanted to boost KaleidoColor&apos;s revenue.
               </li>
             </ul>
@@ -750,10 +772,10 @@ export default function KaleidoColorLabPage() {
           {/* Solution */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-6">
-              <Lightbulb className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">The Solution</h3>
+              <Lightbulb className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">The Solution</h3>
             </div>
-            <p className="ml-9 text-lg text-zinc-500 mb-6">
+            <p className="ml-9 text-base text-zinc-500 mb-6">
               A digital color mixer to integrate our product into the
               user&apos;s journey.
             </p>
@@ -811,10 +833,10 @@ export default function KaleidoColorLabPage() {
             {/* The Result */}
             <div className="mt-12">
               <div className="flex items-center gap-3 mb-4">
-                <Trophy className="w-6 h-6 text-black shrink-0" />
-                <h3 className="text-2xl font-bold text-black">The Result</h3>
+                <Trophy className="w-5 h-5 text-black shrink-0" />
+                <h3 className="text-lg font-bold text-black">The Result</h3>
               </div>
-              <p className="ml-9 text-lg text-zinc-500 mb-6">
+              <p className="ml-9 text-base text-zinc-500 mb-6">
                 Our color product sales surged 227%.
               </p>
               <div>
@@ -849,7 +871,7 @@ export default function KaleidoColorLabPage() {
               lineHeight: 1.5,
             }}
           >
-            {storyWords7.map((word, i) => (
+            {storyWordsDiscovery.map((word, i) => (
               <span
                 key={i}
                 className="story-word inline-block mr-[0.3em]"
@@ -870,13 +892,13 @@ export default function KaleidoColorLabPage() {
           {/* Design Question 1 */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
-              <Search className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <Search className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 Design Question 1: Who are our users?
               </h3>
             </div>
             <div className="ml-9 mb-6">
-              <p className="text-lg text-zinc-500">
+              <p className="text-base text-zinc-500">
                 63.6% of users are model makers.
               </p>
             </div>
@@ -901,19 +923,19 @@ export default function KaleidoColorLabPage() {
           {/* Design Question 2 */}
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-6">
-              <Search className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <Search className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 Design Question 2: What&apos;s their pain points?
               </h3>
             </div>
 
             {/* Pain point text summary */}
             <div className="ml-9 mb-8 space-y-2">
-              <p className="text-lg text-zinc-500">
+              <p className="text-base text-zinc-500">
                 1. Users see a color in the real world but don&apos;t know how
                 to replicate and mix it.
               </p>
-              <p className="text-lg text-zinc-500">
+              <p className="text-base text-zinc-500">
                 2. Users worry about wasting money on colors that won&apos;t
                 produce what they want.
               </p>
@@ -940,11 +962,11 @@ export default function KaleidoColorLabPage() {
           {/* My Ideation */}
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <Lightbulb className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">Design Ideation</h3>
+              <Lightbulb className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Design Ideation</h3>
             </div>
             <div className="ml-9 mb-6">
-              <p className="text-lg text-zinc-500">
+              <p className="text-base text-zinc-500">
                 A color app that lets users purchase the colors they truly need.
               </p>
             </div>
@@ -979,7 +1001,7 @@ export default function KaleidoColorLabPage() {
               lineHeight: 1.5,
             }}
           >
-            {storyWords2.map((word, i) => (
+            {storyWordsFinalVersion.map((word, i) => (
               <span
                 key={i}
                 className="story-word inline-block mr-[0.3em]"
@@ -1001,7 +1023,7 @@ export default function KaleidoColorLabPage() {
             {/* ─── Feature 1: Image Color Picker ─── */}
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-lg font-bold text-black">
                   Feature 1 · Image Color Picker: From Pain Point to Profit
                 </h3>
               </div>
@@ -1038,22 +1060,22 @@ export default function KaleidoColorLabPage() {
                 </p>
               </div>
               <div className="w-full space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Pain Point: Real-world inspiration doesn&apos;t map to the
                   color product.
                 </p>
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Solution: Instant color extraction that recommends the closest
                   matching color or a custom mixing recipe.
+                </p>
+                <p className="text-base text-zinc-500 leading-relaxed">
+                  Beta Update: Always-On Magnifier in Color Picker; Let users
+                  choose the color codes (HEX, RGB, HSL)
                 </p>
               </div>
 
               {/* ── Always-On Magnifier (Image Color Picker refinement) ── */}
               <div className="space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
-                  Beta Update: Always-On Magnifier in Color Picker; Let users
-                  choose the color codes (HEX, RGB, HSL)
-                </p>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {(
                     [
@@ -1099,7 +1121,7 @@ export default function KaleidoColorLabPage() {
             {/* ─── Feature 2: Digital Color Lab ─── */}
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-lg font-bold text-black">
                   Feature 2 · Digital Color Lab: From Fear to Fearless
                 </h3>
               </div>
@@ -1136,16 +1158,16 @@ export default function KaleidoColorLabPage() {
                 </p>
               </div>
               <div className="w-full space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Pain Point: Fear of wasting expensive colors on failed mixing
                   attempts.
                 </p>
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Solution: A digital sandbox to test ratios before physical
                   execution. Users combine colors, adjust ratios in real-time,
                   and preview results.
                 </p>
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Beta Update 1: Enlarged Color area; Add Sortable Swatches.
                 </p>
               </div>
@@ -1195,7 +1217,7 @@ export default function KaleidoColorLabPage() {
 
               {/* ── Beta Update: Hybrid Mix Controls ── */}
               <div className="space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Beta Update 2: Add hybrid mix controls – Slider + Input +
                   Stepper.
                 </p>
@@ -1255,7 +1277,7 @@ export default function KaleidoColorLabPage() {
             {/* ─── Feature 3: Data-Driven Dashboard ─── */}
             <div className="flex flex-col gap-8">
               <div className="w-full space-y-6">
-                <h3 className="text-2xl font-bold text-black">
+                <h3 className="text-lg font-bold text-black">
                   Feature 3 · Data-Driven Dashboard: From Blind to Bold
                 </h3>
               </div>
@@ -1292,12 +1314,12 @@ export default function KaleidoColorLabPage() {
                 </p>
               </div>
               <div className="w-full space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Pain Point: The admin needs to easily update color
                   collections, manage color mixing formulas, and track user
                   preferences and purchase behavior.
                 </p>
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Solution: A dashboard lets admins update color collections,
                   manage mixing formulas, track user preferences and purchase
                   behavior with filters by region and time.
@@ -1317,7 +1339,7 @@ export default function KaleidoColorLabPage() {
       >
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-black mb-8">
+            <h3 className="text-lg font-bold text-black mb-8">
               Feature 4 · Color Note: From Flaw to Feature
             </h3>
           </div>
@@ -1354,7 +1376,7 @@ export default function KaleidoColorLabPage() {
               </div>
               <div className="w-full md:w-7/12">
                 <div className="bg-[#F8F4EF] p-8 rounded-2xl border-2 border-zinc-200">
-                  <ul className="space-y-2 list-disc list-inside text-lg leading-relaxed">
+                  <ul className="space-y-2 list-disc list-inside text-base leading-relaxed">
                     <li className="text-zinc-500">
                       A hardware limitation we couldn&apos;t control.
                     </li>
@@ -1401,11 +1423,11 @@ export default function KaleidoColorLabPage() {
                 </p>
               </div>
               <div className="w-full space-y-6">
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Pain Point: The same color looks different on different
                   screens.
                 </p>
-                <p className="text-zinc-500 leading-relaxed">
+                <p className="text-base text-zinc-500 leading-relaxed">
                   Solution: I designed a personal color note feature that lets
                   users document real-world mixing ratios and techniques,
                   turning a screen accuracy limitation into a user personal
@@ -1431,7 +1453,7 @@ export default function KaleidoColorLabPage() {
               lineHeight: 1.5,
             }}
           >
-            {storyWords3.map((word, i) => (
+            {storyWordsStakeholder.map((word, i) => (
               <span
                 key={i}
                 className="story-word inline-block mr-[0.3em]"
@@ -1451,9 +1473,7 @@ export default function KaleidoColorLabPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Behind the Design */}
           <div className="mb-6 text-center">
-            <h2 className="text-4xl font-bold text-black">
-              — Behind the Design —
-            </h2>
+            <h2 className="text-4xl font-bold text-black">Behind the Design</h2>
           </div>
 
           {/* Tags centered */}
@@ -1466,7 +1486,7 @@ export default function KaleidoColorLabPage() {
             ].map((tag) => (
               <span
                 key={tag}
-                className="text-xs bg-black text-white px-3 py-1 rounded-full"
+                className="text-base bg-black text-white px-3 py-1 rounded-full"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {tag}
@@ -1476,7 +1496,7 @@ export default function KaleidoColorLabPage() {
 
           {/* Rejection context — bullet points */}
           <div className="mb-12 bg-[#F8F4EF] border-2 border-zinc-200 rounded-2xl p-10 relative">
-            <ul className="space-y-3 list-disc list-inside text-black text-lg leading-relaxed">
+            <ul className="space-y-3 list-disc list-inside text-black text-base leading-relaxed">
               <li>Initially, stakeholders did not support the project.</li>
               <li>
                 They believed that designing and developing an app was too
@@ -1488,12 +1508,12 @@ export default function KaleidoColorLabPage() {
           {/* My Solution 1: Competitive Analysis */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-6">
-              <BarChart2 className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <BarChart2 className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 My Solution 1: Marketing Analysis
               </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed ml-10 mb-6">
+            <p className="text-base text-zinc-500 leading-relaxed ml-10 mb-6">
               We can leverage existing color tech with our product to lead the
               industry.
             </p>
@@ -1508,10 +1528,10 @@ export default function KaleidoColorLabPage() {
                   />
                 </div>
                 <div className="p-6 text-center">
-                  <h4 className="text-black font-bold mb-3">
+                  <h4 className="text-base text-black font-bold mb-3">
                     Technology is proven.
                   </h4>
-                  <p className="text-zinc-500 leading-relaxed">
+                  <p className="text-base text-zinc-500 leading-relaxed">
                     Color-mixing apps already exist on the market. The
                     technology is proven — we&apos;re not starting from zero.
                   </p>
@@ -1527,10 +1547,10 @@ export default function KaleidoColorLabPage() {
                   />
                 </div>
                 <div className="p-6 text-center">
-                  <h4 className="text-black font-bold mb-3">
+                  <h4 className="text-base text-black font-bold mb-3">
                     If we do, we lead the industry.
                   </h4>
-                  <p className="text-zinc-500 leading-relaxed">
+                  <p className="text-base text-zinc-500 leading-relaxed">
                     No competitor at our level has built something similar.
                     Being first means industry leadership.
                   </p>
@@ -1544,12 +1564,12 @@ export default function KaleidoColorLabPage() {
           {/* My Solution 2: Code MVP */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <Code2 className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <Code2 className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 My Solution 2: I can quickly code the core features
               </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed ml-10 mb-8">
+            <p className="text-base text-zinc-500 leading-relaxed ml-10 mb-8">
               I negotiated for 2 weeks to build a functional MVP with code to
               prove the technical feasibility.
             </p>
@@ -1616,7 +1636,7 @@ export default function KaleidoColorLabPage() {
             >
               Outcome
             </span>
-            <ul className="space-y-2 list-disc list-inside text-lg text-zinc-500 leading-relaxed">
+            <ul className="space-y-2 list-disc list-inside text-base text-zinc-500 leading-relaxed">
               <li>
                 Through the marketing analysis and my MVP, stakeholders realized
                 that designing and developing an app wasn&apos;t as difficult as
@@ -1629,12 +1649,12 @@ export default function KaleidoColorLabPage() {
           {/* User Video Testing */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <Video className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <Video className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 User Video Testing
               </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed ml-10 mb-4">
+            <p className="text-base text-zinc-500 leading-relaxed ml-10 mb-4">
               Before prioritizing the project, we released a &apos;Let&apos;s
               Talk&apos; video to test users&apos; feedback for a color mixer.
             </p>
@@ -1660,12 +1680,12 @@ export default function KaleidoColorLabPage() {
           {/* Users' Positive Feedback */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <Trophy className="w-6 h-6 text-black shrink-0" />
-              <h3 className="text-2xl font-bold text-black">
+              <Trophy className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 Users&apos; Positive Feedback
               </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed ml-10 mb-6">
+            <p className="text-base text-zinc-500 leading-relaxed ml-10 mb-6">
               Users are excited about the upcoming Color Mixer app.
             </p>
             <div className="grid gap-6 md:grid-cols-3">
@@ -1708,7 +1728,7 @@ export default function KaleidoColorLabPage() {
             >
               Outcome
             </span>
-            <p className="text-lg text-zinc-500 leading-relaxed">
+            <p className="text-base text-zinc-500 leading-relaxed">
               ColorLab was officially upgraded to the company&apos;s Top 1
               Priority project.
             </p>
@@ -1728,31 +1748,15 @@ export default function KaleidoColorLabPage() {
               lineHeight: 1.5,
             }}
           >
-            <span
-              className="story-word inline-block mr-[0.3em]"
-              style={{ opacity: 0 }}
-            >
-              Real
-            </span>
-            <span
-              className="story-word inline-block mr-[0.3em]"
-              style={{ opacity: 0 }}
-            >
-              Users.
-            </span>
-            <br />
-            <span
-              className="story-word inline-block mr-[0.3em]"
-              style={{ opacity: 0 }}
-            >
-              Real
-            </span>
-            <span
-              className="story-word inline-block mr-[0.3em]"
-              style={{ opacity: 0 }}
-            >
-              Feedback.
-            </span>
+            {storyWordsRealUsers.map((word, i) => (
+              <span
+                key={i}
+                className="story-word inline-block mr-[0.3em]"
+                style={{ opacity: 0 }}
+              >
+                {word}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -1763,9 +1767,6 @@ export default function KaleidoColorLabPage() {
       <section id="usability-test" className="w-full py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <p className="text-xl text-zinc-500 mt-6 max-w-3xl mx-auto leading-relaxed">
-              Good design is building tools with users, not just for them.
-            </p>
             <div className="mt-8">
               <div
                 className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
@@ -1875,7 +1876,7 @@ export default function KaleidoColorLabPage() {
             >
               Color Sales Rose
             </p>
-            <p className="mt-6 text-lg text-zinc-500 text-center">
+            <p className="mt-6 text-base text-zinc-500 text-center">
               Our color product sales surged 227%.
             </p>
           </div>
@@ -1959,10 +1960,12 @@ export default function KaleidoColorLabPage() {
                 <div className="mb-4">
                   <item.Icon className="w-8 h-8 text-black" />
                 </div>
-                <h4 className="text-black mb-3 whitespace-nowrap">
+                <h4 className="text-base text-black mb-3 whitespace-nowrap">
                   {item.title}
                 </h4>
-                <p className="text-zinc-500 leading-relaxed">{item.body}</p>
+                <p className="text-base text-zinc-500 leading-relaxed">
+                  {item.body}
+                </p>
                 <div className="mt-6 w-16 h-1 bg-zinc-300" />
               </div>
             ))}
@@ -1977,7 +1980,7 @@ export default function KaleidoColorLabPage() {
         <div className="absolute inset-0 bg-white" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-black mb-6">
+          <h2 className="text-base text-black mb-6">
             Not just a design, but a deployable business solution.
           </h2>
           <p className="text-xl text-zinc-500 mb-10 leading-relaxed max-w-2xl mx-auto">
