@@ -6,7 +6,6 @@ import Image from "next/image";
 import {
   ArrowLeft,
   HeartCrack,
-  HelpCircle,
   User,
   Clock,
   Users,
@@ -23,6 +22,7 @@ import {
   Gift,
   Trophy,
   BarChart2,
+  Sparkles,
 } from "lucide-react";
 
 /* ─── Tech stack icons ─── */
@@ -72,6 +72,15 @@ const storyWords2 = [
   "Turning",
   "Holidays",
   "and",
+  "Product",
+  "Flaw",
+  "into",
+  "Community",
+  "Flywheels",
+];
+
+const storyWords2b = [
+  "Turning",
   "Product",
   "Flaw",
   "into",
@@ -307,6 +316,7 @@ export default function GaahleriCommunityPage() {
   const waveRef = useRef<HTMLHeadingElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
   const storyRef2 = useRef<HTMLDivElement>(null);
+  const storyRef2b = useRef<HTMLDivElement>(null);
   const storyRef3 = useRef<HTMLDivElement>(null);
   const storyRef4 = useRef<HTMLDivElement>(null);
   const storyRef1b = useRef<HTMLDivElement>(null);
@@ -317,6 +327,7 @@ export default function GaahleriCommunityPage() {
     let observerInstance: IntersectionObserver | null = null;
     let observer1bInstance: IntersectionObserver | null = null;
     let observer2Instance: IntersectionObserver | null = null;
+    let observer2bInstance: IntersectionObserver | null = null;
     let observer3Instance: IntersectionObserver | null = null;
     let observer4Instance: IntersectionObserver | null = null;
     let observerContestInstance: IntersectionObserver | null = null;
@@ -426,6 +437,34 @@ export default function GaahleriCommunityPage() {
           observer2Instance.observe(el2);
         }
 
+        /* ─ Story heading 2b animation ─ */
+        if (storyRef2b.current) {
+          const el2b = storyRef2b.current;
+          const words2b = el2b.querySelectorAll<HTMLElement>(".story-word");
+          observer2bInstance = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  gsap.fromTo(
+                    words2b,
+                    { y: 20, opacity: 0 },
+                    {
+                      y: 0,
+                      opacity: 1,
+                      duration: 0.5,
+                      stagger: 0.06,
+                      ease: "back.out(1.7)",
+                    },
+                  );
+                  observer2bInstance?.disconnect();
+                }
+              });
+            },
+            { threshold: 0.15 },
+          );
+          observer2bInstance.observe(el2b);
+        }
+
         /* ─ Story heading 3 animation ─ */
         if (storyRef3.current) {
           const el3 = storyRef3.current;
@@ -520,6 +559,7 @@ export default function GaahleriCommunityPage() {
           storyRef,
           storyRef1b,
           storyRef2,
+          storyRef2b,
           storyRef3,
           storyRef4,
           storyRefContest,
@@ -538,6 +578,7 @@ export default function GaahleriCommunityPage() {
       observerInstance?.disconnect();
       observer1bInstance?.disconnect();
       observer2Instance?.disconnect();
+      observer2bInstance?.disconnect();
       observer3Instance?.disconnect();
       observer4Instance?.disconnect();
       observerContestInstance?.disconnect();
@@ -798,110 +839,46 @@ export default function GaahleriCommunityPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* The Challenge */}
           <div className="mb-16">
-            <div className="flex items-start gap-3 mb-6">
-              <Target className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">The Challenge</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <Target className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">The Challenge</h3>
             </div>
-            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
-              <Image
-                src="/comminity/challenge.webp"
-                alt="The Challenge"
-                width={2560}
-                height={800}
-                className="w-full h-auto block"
-              />
-            </div>
-            <div className="ml-10 space-y-2">
-              <ul className="list-disc list-outside pl-5 space-y-2">
-                <li className="text-lg text-zinc-500 leading-relaxed">
-                  Gaahleri&apos;s website was a{" "}
-                  <span className="font-bold text-black">
-                    standard &quot;buy-and-leave&quot; e-commerce store.
-                  </span>
-                </li>
-                <li className="text-lg text-zinc-500 leading-relaxed">
-                  Brand loyalty was low because there was{" "}
-                  <span className="font-bold text-black">
-                    no reason to return after purchase.
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
+            <ul className="ml-10 mt-3 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Gaahleri&rsquo;s website was a standard
+                &ldquo;buy-and-leave&rdquo; e-commerce store.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Brand loyalty was low because there was no reason to return
+                after purchase.
+              </li>
+            </ul>
 
-          {/* Stakeholder Needs */}
-          <div className="mb-16">
-            <div className="flex items-start gap-3 mb-6">
-              <Flag className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">Stakeholder Needs</h3>
-            </div>
-            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
-              <Image
-                src="/comminity/need.webp"
-                alt="Stakeholder Needs"
-                width={2560}
-                height={800}
-                className="w-full h-auto block"
-              />
-            </div>
-            <p className="ml-10 text-lg font-bold text-black leading-relaxed mb-8">
-              Increase website traffic and user retention.
+            <Image
+              src="/comminity/challenge.webp"
+              alt="Low user retention in traditional e-commerce"
+              width={1200}
+              height={675}
+              className="w-full h-auto rounded-2xl mt-6 border-2 border-zinc-300"
+            />
+            <p
+              className="text-center text-sm text-zinc-500 mt-3"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              Low user retention in traditional e-commerce
             </p>
           </div>
 
-          {/* Design Question */}
+          {/* Design Strategy */}
           <div className="mb-16">
-            <div className="flex items-start gap-3 mb-6">
-              <HelpCircle className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">Design Question</h3>
+            <div className="flex items-center gap-3 mb-6">
+              <Sparkles className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Design Strategy</h3>
             </div>
-            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
-              <Image
-                src="/comminity/Question.webp"
-                alt="Design Question"
-                width={2560}
-                height={800}
-                className="w-full h-auto block"
-              />
-            </div>
-            <div className="ml-10">
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                <span className="font-bold text-black">
-                  Why would users visit our website
-                </span>{" "}
-                if they aren&apos;t ready to buy our product today?
-              </p>
-            </div>
-          </div>
-
-          {/* The Solution */}
-          <div className="mb-16">
-            <div className="flex items-start gap-3 mb-8">
-              <Target className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">The Solution</h3>
-            </div>
-            <div className="mb-6 rounded-2xl overflow-hidden border border-zinc-100">
-              <Image
-                src="/comminity/solution.webp"
-                alt="The Solution"
-                width={2560}
-                height={800}
-                className="w-full h-auto block"
-              />
-            </div>
-            <div className="ml-10 mb-8">
-              <ul className="list-disc list-outside pl-5 space-y-3">
-                <li className="text-lg leading-relaxed">
-                  <span className="font-bold text-black">
-                    Adding a community page and building a community culture.
-                  </span>
-                </li>
-                <li className="text-lg text-zinc-500 leading-relaxed">
-                  Users visit often for info, even without buying.
-                </li>
-              </ul>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 mt-12">
+            <p className="ml-9 text-base text-zinc-500 mb-6">
+              Adding a community page and building a community culture.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2 mt-4">
               <div className="flex flex-col">
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
@@ -981,6 +958,32 @@ export default function GaahleriCommunityPage() {
               After: Contest Intro Page
             </p>
 
+            {/* The Result */}
+            <div className="mt-16 mb-4">
+              <div className="flex items-center gap-3 mb-6">
+                <Trophy className="w-5 h-5 text-black shrink-0" />
+                <h3 className="text-lg font-bold text-black">The Result</h3>
+              </div>
+              <p className="ml-9 text-base text-zinc-500 mb-6">
+                Online store sales increased by 214%.
+              </p>
+              <div className="rounded-2xl overflow-hidden border-2 border-zinc-200">
+                <Image
+                  src="/comminity/result.webp"
+                  alt="The Result"
+                  width={2560}
+                  height={1440}
+                  className="w-full h-auto block"
+                />
+              </div>
+              <p
+                className="mt-3 text-center text-sm text-zinc-500"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Online store sales increased by 214%
+              </p>
+            </div>
+
             {/* Contest feature images — hidden */}
           </div>
         </div>
@@ -1020,35 +1023,24 @@ export default function GaahleriCommunityPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Discovery: The 24k Insight */}
           <div className="mb-6">
-            <div className="flex items-start gap-3 mb-6">
-              <Search className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">
-                My Discovery: The &quot;24k Insight&quot;
+            <div className="flex items-center gap-3 mb-2">
+              <BarChart2 className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
+                Social Media Analysis
               </h3>
             </div>
 
             {/* Data Analysis */}
             <div className="mb-10">
-              <h4
-                className="font-bold text-black mb-4 ml-1"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Data Analysis
-              </h4>
-              <ul className="list-disc list-outside pl-5 ml-1 space-y-2 mb-8">
-                <li className="text-lg text-zinc-500 leading-relaxed">
-                  The company&apos;s{" "}
-                  <span className="font-bold text-black">
-                    main promotional channels
-                  </span>{" "}
-                  are its sales website and{" "}
-                  <span className="font-bold text-black">YouTube</span>.
+              <ul className="ml-10 mt-3 space-y-2 list-disc list-inside mb-8">
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  The company&apos;s main promotional channels are its sales
+                  website and YouTube.
                 </li>
-                <li className="text-lg text-zinc-500 leading-relaxed">
+                <li className="text-base text-zinc-500 leading-relaxed">
                   While auditing YouTube performance, I found a
-                  &quot;Workstation&quot; video with{" "}
-                  <span className="font-bold text-black">24,000 views</span>,
-                  far exceeding the 6k average for product demo videos.
+                  &quot;Workstation&quot; video with 24,000 views, far exceeding
+                  the 6k average for product demo videos.
                 </li>
               </ul>
 
@@ -1137,14 +1129,22 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
 
-            {/* Why This Video Went Viral */}
+            {/* User Research: 3D model first → then our product */}
             <div className="mb-10">
-              <h4
-                className="font-bold text-black mb-6 ml-1"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Why This Video Went Viral
-              </h4>
+              <div className="flex items-center gap-3 mb-2">
+                <Search className="w-5 h-5 text-black shrink-0" />
+                <h3 className="text-lg font-bold text-black">User Research</h3>
+              </div>
+              <ul className="ml-10 mt-3 mb-6 space-y-2 list-disc list-inside">
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  Users are tired of searching for free, high-quality 3D models.
+                </li>
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  Users want to solve real-world problems with their own
+                  hand-drawn 3D models.
+                </li>
+              </ul>
+
               <div className="grid gap-6 md:grid-cols-2 mb-8">
                 <div className="flex flex-col">
                   <div
@@ -1165,7 +1165,7 @@ export default function GaahleriCommunityPage() {
                     className="mt-3 text-center text-sm text-zinc-500"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    Users face similar problems
+                    Users need 3D models
                   </p>
                 </div>
                 <div className="flex flex-col">
@@ -1191,70 +1191,10 @@ export default function GaahleriCommunityPage() {
                   </p>
                 </div>
               </div>
-
-              <div className="bg-white rounded-2xl border-2 border-zinc-200 overflow-hidden">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-zinc-100 bg-zinc-50">
-                      <th
-                        className="text-left px-6 py-4 font-bold text-black"
-                        style={{ fontFamily: "var(--font-body)" }}
-                      >
-                        Other Video (Product-centric)
-                      </th>
-                      <th
-                        className="text-left px-6 py-4 font-bold text-black"
-                        style={{ fontFamily: "var(--font-body)" }}
-                      >
-                        This Video (User-centric)
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { before: "6k views", after: "24k views" },
-                      {
-                        before: '"Our product is great → buy it now!"',
-                        after:
-                          '"We use our product & 3D models: Messy workstation → clean zone"',
-                      },
-                      {
-                        before: "Introduce the product",
-                        after: "Solve the real problem",
-                      },
-                      { before: "Watch our ad", after: "Free 3D model" },
-                    ].map((row, idx) => (
-                      <tr
-                        key={idx}
-                        className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50 transition-colors"
-                      >
-                        <td
-                          className="px-6 py-4 text-zinc-500"
-                          style={{ fontFamily: "var(--font-body)" }}
-                        >
-                          {row.before}
-                        </td>
-                        <td
-                          className="px-6 py-4 font-bold text-black"
-                          style={{ fontFamily: "var(--font-body)" }}
-                        >
-                          {row.after}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
             </div>
 
             {/* User Research */}
             <div className="mb-10">
-              <h4
-                className="font-bold text-black mb-6 ml-1"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                User Research: 3D model first → then our product
-              </h4>
               <div className="grid gap-6 md:grid-cols-2 items-stretch mb-8">
                 {/* Main User image */}
                 <div className="flex flex-col">
@@ -1271,14 +1211,7 @@ export default function GaahleriCommunityPage() {
                         fill
                         className="object-contain"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/90">
-                        <p
-                          className="text-xl font-extrabold text-black text-center"
-                          style={{ fontFamily: "var(--font-body)" }}
-                        >
-                          63.6% 3D model
-                        </p>
-                      </div>
+
                       <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                         <Maximize2 className="w-4 h-4 text-black" />
                       </div>
@@ -1288,7 +1221,7 @@ export default function GaahleriCommunityPage() {
                     className="mt-2 text-center text-sm font-medium text-zinc-600"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    User Research
+                    63.6% of users are 3D model makers
                   </p>
                 </div>
                 {/* Community Persona image */}
@@ -1306,14 +1239,7 @@ export default function GaahleriCommunityPage() {
                         fill
                         className="object-contain"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/90">
-                        <p
-                          className="text-sm font-extrabold text-black text-center"
-                          style={{ fontFamily: "var(--font-body)" }}
-                        >
-                          Finding 3D models is often frustrating
-                        </p>
-                      </div>
+
                       <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                         <Maximize2 className="w-4 h-4 text-black" />
                       </div>
@@ -1323,53 +1249,25 @@ export default function GaahleriCommunityPage() {
                     className="mt-2 text-center text-sm font-medium text-zinc-600"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    User Persona
+                    Finding 3D models is often frustrating
                   </p>
                 </div>
-              </div>
-
-              {/* User Pain Points */}
-              <div className="space-y-3 ml-1">
-                <div className="flex items-center gap-2 mb-4">
-                  <HeartCrack className="w-5 h-5 text-black shrink-0" />
-                  <h4
-                    className="font-bold text-black"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    User Pain Points
-                  </h4>
-                </div>
-                <ul className="list-disc list-outside pl-5 space-y-2">
-                  <li className="text-zinc-500 leading-relaxed">
-                    <span className="font-bold text-black">
-                      Users are tired of searching for free, high-quality 3D
-                      models.
-                    </span>
-                  </li>
-                  <li className="text-zinc-500 leading-relaxed">
-                    <span className="font-bold text-black">
-                      Users want to solve real-world problems with their own
-                      hand-drawn 3D models.
-                    </span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
 
           {/* My Ideation */}
           <div>
-            <div className="flex items-start gap-3 mb-6">
-              <Lightbulb className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">
-                <span className="font-bold">
-                  My Ideation: 3D model community + Our Product
-                </span>
-              </h3>
+            <div className="flex items-center gap-3 mb-2">
+              <Lightbulb className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Design Ideation</h3>
             </div>
+            <p className="ml-9 text-base text-zinc-500 mb-6">
+              3D model community + Our Product
+            </p>
 
             <div
-              className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 ml-10 mb-6"
+              className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 mb-3"
               onClick={() => setZoomedImage("/comminity/Ideation.webp")}
             >
               <Image
@@ -1384,10 +1282,10 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
             <p
-              className="text-center text-sm text-zinc-500 mb-6 ml-10"
+              className="text-center text-sm text-zinc-500 mb-6"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              My Ideation: Gaahleri 3D Model Community
+              Gaahleri 3D Model Community
             </p>
 
             <div className="bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6 ml-10">
@@ -1397,7 +1295,7 @@ export default function GaahleriCommunityPage() {
               >
                 User-centered
               </span>
-              <p className="text-lg text-black leading-relaxed font-bold">
+              <p className="text-base text-zinc-500 leading-relaxed">
                 Users need 3D models before using our product. This process is
                 frustrating. We&apos;ll provide them for free and build a
                 community.
@@ -1612,7 +1510,41 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* ════════════════════════════════════════════════════════
+          STORY BANNER 2b
+          ═══════════════════════════════════════════════════════ */}
+      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            ref={storyRef2b}
+            className="text-black font-bold leading-relaxed"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)",
+              lineHeight: 1.5,
+            }}
+          >
+            {storyWords2b.map((word, i) => (
+              <span
+                key={i}
+                className="story-word inline-block mr-[0.3em]"
+                style={{ opacity: 0 }}
+              >
+                {word}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          SECTION 2 (cont.): VALIDATION 2 — CHRISTMAS
+          ═══════════════════════════════════════════════════════ */}
+      <section className="w-full py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Validation 2 — Christmas */}
           <div>
             <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
@@ -2185,8 +2117,7 @@ export default function GaahleriCommunityPage() {
               className="mt-4 text-center text-sm text-zinc-500"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              Online store sales increased by{" "}
-              <span className="text-black font-extrabold text-3xl">214%</span>
+              Online store sales increased by 214%
             </p>
           </div>
 
@@ -2198,7 +2129,7 @@ export default function GaahleriCommunityPage() {
             >
               Outcome
             </span>
-            <p className="text-lg text-black leading-relaxed font-bold">
+            <p className="text-base text-zinc-500 leading-relaxed">
               We built a &quot;creative home&quot; &mdash; shifting from product
               vendor to creator ally, doubling customer value.
             </p>
