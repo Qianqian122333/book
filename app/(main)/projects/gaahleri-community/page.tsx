@@ -39,53 +39,43 @@ const techStack = [
 
 /* ─── Story heading words ─── */
 const storyWords = [
-  "How",
-  "I",
-  "solved",
-  "the",
-  "problem",
-  "of",
-  "low",
-  "user",
-  "retention",
+  "Solve",
+  "Low",
+  "Retention",
   "in",
-  "traditional",
-  "e-commerce",
-  "stores.",
+  "Traditional",
+  "E-commerce",
 ];
 
 const storyWords1b = [
-  "I",
-  "found",
-  "real",
-  "user",
-  "pain",
-  "points",
-  "through",
-  "social",
-  "media",
-  "data",
-  "analysis.",
+  "Found",
+  "User",
+  "Pain",
+  "Points",
+  "via",
+  "Social",
+  "Data.",
 ];
 
 const storyWords2 = [
-  "Turning",
-  "Holidays",
-  "and",
-  "Product",
-  "Flaw",
+  "Turn",
+  "a",
+  "holiday",
   "into",
-  "Community",
-  "Flywheels",
+  "a",
+  "community-building",
+  "moment.",
 ];
 
 const storyWords2b = [
-  "Turning",
+  "Turn",
+  "a",
   "Product",
-  "Flaw",
+  "Problem",
   "into",
+  "a",
   "Community",
-  "Flywheels",
+  "Opportunity.",
 ];
 
 const storyWords3 = [
@@ -100,18 +90,13 @@ const storyWords3 = [
 ];
 
 const storyWordsContest = [
-  "How",
-  "a",
-  "model",
-  "competition",
-  "used",
-  "peer",
-  "recognition",
-  "to",
-  "build",
-  "a",
-  "hobby",
+  "Beyond",
+  "holidays:",
+  "competitions",
+  "make",
+  "the",
   "community",
+  "last.",
 ];
 
 const storyWords4 = [
@@ -617,7 +602,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           HERO SECTION
           ═══════════════════════════════════════════════════════ */}
-      <section className="relative py-20 bg-white overflow-hidden">
+      <section
+        id="introduction"
+        className="relative py-20 bg-white overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/home#projects"
@@ -684,8 +672,8 @@ export default function GaahleriCommunityPage() {
             className="text-center text-4xl text-black font-bold mb-16"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            I turned a traditional buy-and-leave e-commerce store into a hobby
-            community users visit often.
+            Turned Low-retention E-commerce into a High-engagement Hobby
+            Community.
           </p>
 
           {/* Role / Duration / Collaboration */}
@@ -745,6 +733,12 @@ export default function GaahleriCommunityPage() {
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 3D Design Team
+              </p>
+              <p
+                className="text-black"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Back-end Developer
               </p>
               <p
                 className="text-black"
@@ -869,14 +863,15 @@ export default function GaahleriCommunityPage() {
             </p>
           </div>
 
-          {/* Design Strategy */}
+          {/* Design Solution */}
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
-              <Sparkles className="w-5 h-5 text-black shrink-0" />
-              <h3 className="text-lg font-bold text-black">Design Strategy</h3>
+              <Lightbulb className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">The Solution</h3>
             </div>
             <p className="ml-9 text-base text-zinc-500 mb-6">
-              Adding a community page and building a community culture.
+              Turn a traditional buy-and-leave e-commerce store into a hobby
+              community users visit often.
             </p>
             <div className="grid gap-6 md:grid-cols-2 mt-4">
               <div className="flex flex-col">
@@ -1038,9 +1033,8 @@ export default function GaahleriCommunityPage() {
                   website and YouTube.
                 </li>
                 <li className="text-base text-zinc-500 leading-relaxed">
-                  While auditing YouTube performance, I found a
-                  &quot;Workstation&quot; video with 24,000 views, far exceeding
-                  the 6k average for product demo videos.
+                  While auditing YouTube performance, I found a a
+                  high-performing video far above the average.
                 </li>
               </ul>
 
@@ -1127,25 +1121,15 @@ export default function GaahleriCommunityPage() {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* User Research: 3D model first → then our product */}
-            <div className="mb-10">
-              <div className="flex items-center gap-3 mb-2">
-                <Search className="w-5 h-5 text-black shrink-0" />
-                <h3 className="text-lg font-bold text-black">User Research</h3>
-              </div>
-              <ul className="ml-10 mt-3 mb-6 space-y-2 list-disc list-inside">
+              {/* Users need 3D models — feedback images */}
+              <ul className="ml-10 mt-10 mb-6 space-y-2 list-disc list-inside">
                 <li className="text-base text-zinc-500 leading-relaxed">
-                  Users are tired of searching for free, high-quality 3D models.
-                </li>
-                <li className="text-base text-zinc-500 leading-relaxed">
-                  Users want to solve real-world problems with their own
-                  hand-drawn 3D models.
+                  While auditing YouTube performance, I found a high-performing
+                  video far above the average.
                 </li>
               </ul>
-
-              <div className="grid gap-6 md:grid-cols-2 mb-8">
+              <div className="grid gap-6 md:grid-cols-2">
                 <div className="flex flex-col">
                   <div
                     className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black aspect-video"
@@ -1193,8 +1177,24 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
 
-            {/* User Research */}
+            {/* User Research: 3D model first → then our product */}
             <div className="mb-10">
+              <div className="flex items-center gap-3 mb-2">
+                <Search className="w-5 h-5 text-black shrink-0" />
+                <h3 className="text-lg font-bold text-black">User Research</h3>
+              </div>
+              <ul className="ml-10 mt-3 mb-6 space-y-2 list-disc list-inside">
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  Our main users are 3D model makers.
+                </li>
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  Users need 3D models before using our product.
+                </li>
+                <li className="text-base text-zinc-500 leading-relaxed">
+                  Finding 3D models is often frustrating.
+                </li>
+              </ul>
+
               <div className="grid gap-6 md:grid-cols-2 items-stretch mb-8">
                 {/* Main User image */}
                 <div className="flex flex-col">
@@ -1288,7 +1288,8 @@ export default function GaahleriCommunityPage() {
               Gaahleri 3D Model Community
             </p>
 
-            <div className="bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6 ml-10">
+            <div className="bg-[#F8F4EF] border-l-4 border-black rounded-r-2xl p-6 ml-10 hidden">
+              {/* commented out per request — kept for reference
               <span
                 className="inline-block text-xs bg-black text-white px-3 py-1 rounded-full mb-3"
                 style={{ fontFamily: "var(--font-body)" }}
@@ -1300,6 +1301,7 @@ export default function GaahleriCommunityPage() {
                 frustrating. We&apos;ll provide them for free and build a
                 community.
               </p>
+              */}
             </div>
           </div>
         </div>
@@ -1339,79 +1341,51 @@ export default function GaahleriCommunityPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Validation 1 — Halloween */}
           <div className="mb-20">
-            <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
-              <span style={{ fontFamily: "var(--font-body)" }}>
-                Holiday · The Halloween Experiment
-              </span>
+            {/* User Research */}
+            <div className="flex items-center gap-3 mb-2">
+              <Search className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">User Research</h3>
             </div>
+            <p className="ml-9 text-base text-zinc-500 mb-6 leading-relaxed">
+              In Halloween, users want to create and paint Halloween-themed 3D
+              models.
+            </p>
 
-            <div className="flex items-start gap-3 mb-3">
-              <Search className="w-5 h-5 text-black shrink-0 mt-1" />
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Insight: Users want to create and paint{" "}
-                <span className="font-bold text-black">
-                  Halloween-themed 3D models
-                </span>
-                .
-              </p>
-            </div>
-            <div className="flex items-start gap-3 mb-3">
-              <Target className="w-5 h-5 text-black shrink-0 mt-1" />
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Action: We released a{" "}
-                <span className="font-bold text-black">
-                  Halloween color bundle
-                </span>
-                , created a{" "}
-                <span className="font-bold text-black">
-                  tutorial video on painting Halloween 3D models
-                </span>
-                , and offered the{" "}
-                <span className="font-bold text-black">
-                  3D model files for free
-                </span>
-                .
-              </p>
-            </div>
-            <div className="flex items-start gap-3 mb-8">
-              <TrendingUp className="w-5 h-5 text-black shrink-0 mt-1" />
-              <div className="text-lg text-zinc-500 leading-relaxed">
-                <p className="mb-3">Outcome:</p>
-                <ul className="list-disc list-outside pl-5 space-y-2">
-                  <li>
-                    <span className="font-bold text-black">
-                      Halloween color bundle sales spiked
-                    </span>
-                    .
-                  </li>
-                  <li>
-                    <span className="font-bold text-black">
-                      First wave of organic user-generated content
-                    </span>
-                    .
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Halloween Tutorial YouTube Video */}
-            <div className="mb-8">
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-200 mb-3">
-                <iframe
-                  src="https://www.youtube.com/embed/00IvSd1Kfqk"
-                  title="Halloween 3D Model Tutorial"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
+            {/* User Quote */}
+            <figure className="ml-9 mb-10 flex items-center gap-4 rounded-2xl border-2 border-zinc-200 bg-[#F8F4EF] p-5">
+              <div className="relative w-12 h-12 shrink-0 rounded-full overflow-hidden border-2 border-zinc-200 bg-white">
+                <Image
+                  src="/comminity/avatar.png"
+                  alt="User avatar"
+                  fill
+                  className="object-cover"
                 />
               </div>
-              <p
-                className="text-center text-sm text-zinc-500"
+              <blockquote
+                className="text-base text-zinc-700 italic leading-relaxed"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Halloween 3D Model Tutorial
-              </p>
+                &ldquo;I don&apos;t want store-bought decorations. I want to
+                make my own pumpkin.&rdquo;
+              </blockquote>
+            </figure>
+
+            {/* Design Strategy */}
+            <div className="flex items-center gap-3 mb-2">
+              <Sparkles className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Design Strategy</h3>
             </div>
+            <ul className="ml-10 mt-3 mb-8 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Offered the 3D model files for free.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Created a tutorial video on painting Halloween 3D models.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Released a Halloween color bundle.
+              </li>
+            </ul>
 
             {/* Halloween images */}
             <div className="grid gap-6 md:grid-cols-2 mb-8">
@@ -1461,7 +1435,142 @@ export default function GaahleriCommunityPage() {
               </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            {/* Pumpkin tutorial images */}
+            <div className="grid gap-6 md:grid-cols-2 mb-8">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() => setZoomedImage("/comminity/pumpkin1.webp")}
+                >
+                  <Image
+                    src="/comminity/pumpkin1.webp"
+                    alt="Teach users to paint pumpkins with our products"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Teach users to paint pumpkins with our products
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() => setZoomedImage("/comminity/pumpkin2.webp")}
+                >
+                  <Image
+                    src="/comminity/pumpkin2.webp"
+                    alt="Teach users to paint pumpkins with our products"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Teach users to paint pumpkins with our products
+                </p>
+              </div>
+            </div>
+
+            {/* Halloween color bundle + Tutorial video — side by side */}
+            <div className="grid gap-6 md:grid-cols-2 mb-12">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
+                  onClick={() =>
+                    setZoomedImage("/comminity/holiday%20colors.webp")
+                  }
+                >
+                  <Image
+                    src="/comminity/holiday colors.webp"
+                    alt="Halloween color bundle"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Halloween color bundle
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-200">
+                  <iframe
+                    src="https://www.youtube.com/embed/00IvSd1Kfqk"
+                    title="Halloween 3D Model Tutorial"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Halloween 3D Model Tutorial
+                </p>
+              </div>
+            </div>
+
+            {/* Outcome */}
+            <div className="flex items-center gap-3 mb-2">
+              <TrendingUp className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Outcome</h3>
+            </div>
+            <ul className="ml-10 mt-3 mb-8 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Halloween color bundle sales spiked.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                First wave of organic user-generated content.
+              </li>
+            </ul>
+
+            {/* Holiday colors image */}
+            <div className="mb-8 hidden">
+              {/* moved above; kept hidden for reference */}
+              <div
+                className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white"
+                onClick={() =>
+                  setZoomedImage("/comminity/holiday%20colors.webp")
+                }
+              >
+                <Image
+                  src="/comminity/holiday colors.webp"
+                  alt="Halloween color bundle sales spiked"
+                  width={1200}
+                  height={675}
+                  className="w-full h-auto"
+                />
+                <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                  <Maximize2 className="w-4 h-4 text-black" />
+                </div>
+              </div>
+              <p
+                className="mt-3 text-center text-sm text-zinc-500"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Halloween color bundle sales spiked.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 mb-6">
               <div className="flex flex-col">
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
@@ -1469,7 +1578,7 @@ export default function GaahleriCommunityPage() {
                 >
                   <Image
                     src="/comminity/user-shsare.webp"
-                    alt="Halloween User-Generated Content"
+                    alt="User Share 1"
                     fill
                     className="object-contain"
                   />
@@ -1481,19 +1590,19 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  First wave of organic user-generated content
+                  User Share 1
                 </p>
               </div>
               <div className="flex flex-col">
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
                   onClick={() =>
-                    setZoomedImage("/comminity/halloween user.webp")
+                    setZoomedImage("/comminity/halloween%20user.webp")
                   }
                 >
                   <Image
                     src="/comminity/halloween user.webp"
-                    alt="Halloween User-Generated Content"
+                    alt="User Share 2"
                     fill
                     className="object-contain"
                   />
@@ -1505,7 +1614,56 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  First wave of organic user-generated content
+                  User Share 2
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
+                  onClick={() =>
+                    setZoomedImage("/comminity/user%20share3.webp")
+                  }
+                >
+                  <Image
+                    src="/comminity/user share3.webp"
+                    alt="User Share 3"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  User Share 3
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50 aspect-video"
+                  onClick={() => setZoomedImage("/user%20share4.webp")}
+                >
+                  <Image
+                    src="/user share4.webp"
+                    alt="User Share 4"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  User Share 4
                 </p>
               </div>
             </div>
@@ -1543,84 +1701,60 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           SECTION 2 (cont.): VALIDATION 2 — CHRISTMAS
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-white">
+      <section id="crisis" className="w-full py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Validation 2 — Christmas */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-zinc-100 text-zinc-600 px-4 py-1.5 rounded-full text-sm mb-6 border border-zinc-200">
-              <span style={{ fontFamily: "var(--font-body)" }}>
-                Holiday | ProductFlaw · The Christmas Pivot: From Flaw to
-                Strength
-              </span>
+            {/* Product Problem */}
+            <div className="flex items-center gap-3 mb-2">
+              <HeartCrack className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Product Problem</h3>
             </div>
+            <p className="ml-9 text-base text-zinc-500 mb-6 leading-relaxed">
+              Users reported that airbrush cup lids sometimes get stuck.
+            </p>
 
-            <div className="flex items-start gap-3 mb-3">
-              <HeartCrack className="w-5 h-5 text-black shrink-0 mt-1" />
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Conflict: Users reported that airbrush{" "}
-                <span className="font-bold text-black">
-                  cup lids sometimes get stuck
-                </span>{" "}
-                —{" "}
-                <span className="font-bold text-black">
-                  negative product experience
-                </span>
-                .
-              </p>
-            </div>
-            <div className="flex items-start gap-3 mb-3">
-              <Lightbulb className="w-5 h-5 text-black shrink-0 mt-1" />
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Strategy: We{" "}
-                <span className="font-bold text-black">
-                  designed Christmas-themed 3D-printable lid grips
-                </span>{" "}
-                (Santa hats, Christmas trees, etc.).
-              </p>
-            </div>
-            <div className="flex items-start gap-3 mb-8">
-              <TrendingUp className="w-5 h-5 text-black shrink-0 mt-1" />
-              <p className="text-lg text-zinc-500 leading-relaxed">
-                Outcome: Negative sentiment decreased significantly. Users began
-                printing, customizing, and sharing their own lid designs —{" "}
-                <span className="font-bold text-black">
-                  customer satisfaction with the product rose from 64.3% to
-                  89.2%.
-                </span>
-              </p>
-            </div>
-
-            {/* Christmas Pivot YouTube Video */}
-            <div className="mb-8">
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-200 mb-3">
-                <iframe
-                  src="https://www.youtube.com/embed/CR1yxwvQOlA"
-                  title="Turn lids get struck into a custom lids opportunity"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
+            {/* Product Problem video + Design Solution image */}
+            <div className="grid gap-6 md:grid-cols-2 mb-12">
+              <div className="flex flex-col">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-200 bg-black">
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source
+                      src="/comminity/product%20problem.webm"
+                      type="video/webm"
+                    />
+                    <source
+                      src="/comminity/product%20problem.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Product Problem
+                </p>
               </div>
-              <p
-                className="text-center text-sm text-zinc-500"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Turn &quot;lids get struck&quot; into a custom lids opportunity.
-              </p>
-            </div>
-
-            {/* Co-creation community page — two separate cards (moved above campaign) */}
-            <div className="grid gap-6 md:grid-cols-2 mb-8">
               <div className="flex flex-col">
                 <div
                   className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-white aspect-video"
-                  onClick={() => setZoomedImage("/comminity/cup.webp")}
+                  onClick={() =>
+                    setZoomedImage("/comminity/product%20lid.webp")
+                  }
                 >
                   <Image
-                    src="/comminity/cup.webp"
-                    alt="Co-creation Community Page"
+                    src="/comminity/product lid.webp"
+                    alt="Design Solution"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                     <Maximize2 className="w-4 h-4 text-black" />
@@ -1630,34 +1764,24 @@ export default function GaahleriCommunityPage() {
                   className="mt-3 text-center text-sm text-zinc-500"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Problem: cup lids sometimes get stuck
-                </p>
-              </div>
-              <div className="flex flex-col">
-                <div
-                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#4e0c06] aspect-video"
-                  onClick={() => setZoomedImage("/comminity/Christmas.webp")}
-                >
-                  <Image
-                    src="/comminity/Christmas.webp"
-                    alt="Co-creation Community Page"
-                    fill
-                    className="object-contain"
-                  />
-                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-                    <Maximize2 className="w-4 h-4 text-black" />
-                  </div>
-                </div>
-                <p
-                  className="mt-3 text-center text-sm text-zinc-500"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Turn the problem into user-loved DIY.
+                  Design Solution
                 </p>
               </div>
             </div>
 
-            {/* Born from your feedback — full width */}
+            {/* Design Strategy */}
+            <div className="flex items-center gap-3 mb-2">
+              <Sparkles className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Design Strategy</h3>
+            </div>
+            <ul className="ml-10 mt-3 mb-8 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Designed Christmas-themed 3D-printable lid grips (Santa hats,
+                Christmas trees, etc.).
+              </li>
+            </ul>
+
+            {/* Big image — Born from your feedback */}
             <div className="mb-8">
               <div
                 className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-zinc-50"
@@ -1680,9 +1804,71 @@ export default function GaahleriCommunityPage() {
                 className="mt-3 text-center text-sm text-zinc-500"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                &quot;Born from your feedback&quot; campaign
+                &quot;Born from your feedback&quot; campaign.
               </p>
             </div>
+
+            {/* Side-by-side small image + small video */}
+            <div className="grid gap-6 md:grid-cols-2 mb-12">
+              <div className="flex flex-col">
+                <div
+                  className="relative group cursor-zoom-in rounded-2xl overflow-hidden border-2 border-zinc-200 bg-[#4e0c06] aspect-video"
+                  onClick={() => setZoomedImage("/comminity/Christmas.webp")}
+                >
+                  <Image
+                    src="/comminity/Christmas.webp"
+                    alt="Turn the problem into user-loved DIY"
+                    fill
+                    className="object-contain"
+                  />
+                  <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+                    <Maximize2 className="w-4 h-4 text-black" />
+                  </div>
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Turn the problem into user-loved DIY.
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-2 border-zinc-200">
+                  <iframe
+                    src="https://www.youtube.com/embed/CR1yxwvQOlA"
+                    title="Turn lids get struck into a custom lids opportunity"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+                <p
+                  className="mt-3 text-center text-sm text-zinc-500"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  Turn &quot;lids get struck&quot; into a custom lids
+                  opportunity.
+                </p>
+              </div>
+            </div>
+
+            {/* Outcome */}
+            <div className="flex items-center gap-3 mb-2">
+              <TrendingUp className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Outcome</h3>
+            </div>
+            <ul className="ml-10 mt-3 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Negative sentiment decreased significantly.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Users began printing, customizing, and sharing their own lid
+                designs.
+              </li>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Customer satisfaction with the product rose from 64.3% to 89.2%.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -1721,50 +1907,36 @@ export default function GaahleriCommunityPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* ── Competition Background ── */}
           <div className="mb-20">
-            <div className="flex items-start gap-3 mb-6">
-              <Flag className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">Competition Background</h3>
+            <div className="flex items-center gap-3 mb-2">
+              <Flag className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
+                Competition Background
+              </h3>
             </div>
-            <ul className="ml-9 space-y-3 list-none">
-              <li className="text-lg text-zinc-500 leading-relaxed flex items-start gap-2">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
-                <span>
-                  Halloween and Christmas taught us that giving users a{" "}
-                  <span className="font-bold text-black">
-                    &ldquo;reason to create&rdquo;
-                  </span>{" "}
-                  drives engagement.
-                </span>
+            <ul className="ml-10 mt-3 space-y-2 list-disc list-inside">
+              <li className="text-base text-zinc-500 leading-relaxed">
+                Halloween and Christmas taught us that giving users a
+                &ldquo;reason to create&rdquo; drives engagement.
               </li>
-              <li className="text-lg text-zinc-500 leading-relaxed flex items-start gap-2">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-zinc-400 shrink-0" />
-                <span>
-                  But{" "}
-                  <span className="font-bold text-black">
-                    seasonal spikes don&apos;t build lasting communities
-                  </span>
-                  .
-                </span>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                But seasonal spikes don&apos;t build lasting communities.
               </li>
-              <li className="text-lg leading-relaxed flex items-start gap-2">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-black shrink-0" />
-                <span className="font-bold text-black">
-                  We scaled the insight into GWCC: a model competition designed
-                  to turn our e-commerce into a lasting 3D model community.
-                </span>
+              <li className="text-base text-zinc-500 leading-relaxed">
+                We scaled the insight into GWCC: a model competition designed to
+                turn our e-commerce into a lasting 3D model community.
               </li>
             </ul>
           </div>
 
           {/* ── Solution ── */}
           <div className="mb-20">
-            <div className="flex items-start gap-3 mb-3">
-              <Trophy className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">
+            <div className="flex items-center gap-3 mb-2">
+              <Trophy className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">
                 GWCC &mdash; A 4-Month Model Creation Competition
               </h3>
             </div>
-            <p className="text-lg text-zinc-500 leading-relaxed mb-10 ml-9 italic">
+            <p className="ml-9 text-base text-zinc-500 mb-10 leading-relaxed">
               Not just a contest. A rite of passage for every modeler.
             </p>
 
@@ -1810,9 +1982,9 @@ export default function GaahleriCommunityPage() {
 
           {/* ── Outcome ── */}
           <div>
-            <div className="flex items-start gap-3 mb-10">
-              <BarChart2 className="w-6 h-6 text-black shrink-0 mt-0.5" />
-              <h3 className="text-black">Outcome</h3>
+            <div className="flex items-center gap-3 mb-10">
+              <BarChart2 className="w-5 h-5 text-black shrink-0" />
+              <h3 className="text-lg font-bold text-black">Outcome</h3>
             </div>
 
             {/* Community Flywheel heading */}
