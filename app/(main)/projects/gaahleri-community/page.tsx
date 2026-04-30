@@ -802,7 +802,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER 1
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="overview-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRef}
@@ -987,7 +990,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER 1b
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="research-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRef1b}
@@ -1033,8 +1039,8 @@ export default function GaahleriCommunityPage() {
                   website and YouTube.
                 </li>
                 <li className="text-base text-zinc-500 leading-relaxed">
-                  While auditing YouTube performance, I found a a
-                  high-performing video far above the average.
+                  While auditing YouTube performance, I found a high-performing
+                  video far above the average.
                 </li>
               </ul>
 
@@ -1125,8 +1131,8 @@ export default function GaahleriCommunityPage() {
               {/* Users need 3D models — feedback images */}
               <ul className="ml-10 mt-10 mb-6 space-y-2 list-disc list-inside">
                 <li className="text-base text-zinc-500 leading-relaxed">
-                  While auditing YouTube performance, I found a high-performing
-                  video far above the average.
+                  In this video, we offered free 3D models &mdash; exactly what
+                  users needed.
                 </li>
               </ul>
               <div className="grid gap-6 md:grid-cols-2">
@@ -1310,7 +1316,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER 2
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="holiday-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRef2}
@@ -1446,7 +1455,7 @@ export default function GaahleriCommunityPage() {
                     src="/comminity/pumpkin1.webp"
                     alt="Teach users to paint pumpkins with our products"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                     <Maximize2 className="w-4 h-4 text-black" />
@@ -1468,7 +1477,7 @@ export default function GaahleriCommunityPage() {
                     src="/comminity/pumpkin2.webp"
                     alt="Teach users to paint pumpkins with our products"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                     <Maximize2 className="w-4 h-4 text-black" />
@@ -1496,7 +1505,7 @@ export default function GaahleriCommunityPage() {
                     src="/comminity/holiday colors.webp"
                     alt="Halloween color bundle"
                     fill
-                    className="object-contain"
+                    className="object-cover"
                   />
                   <div className="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
                     <Maximize2 className="w-4 h-4 text-black" />
@@ -1674,7 +1683,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER 2b
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="crisis-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRef2b}
@@ -1876,7 +1888,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER CONTEST (standalone) — How a model competition…
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="contest-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRefContest}
@@ -2203,7 +2218,10 @@ export default function GaahleriCommunityPage() {
       {/* ════════════════════════════════════════════════════════
           STORY BANNER 4
           ═══════════════════════════════════════════════════════ */}
-      <section className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden">
+      <section
+        id="result-banner"
+        className="w-full py-24 bg-[#F8F4EF] relative overflow-hidden"
+      >
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div
             ref={storyRef4}

@@ -24,12 +24,12 @@ import { VisuallyHidden } from "radix-ui";
 
 const sidebarItems = [
   { id: "introduction", label: "Introduction", Icon: BookOpen },
-  { id: "challenge", label: "Overview", Icon: Compass },
-  { id: "discovery", label: "Research", Icon: Search },
-  { id: "validation", label: "Holiday Design", Icon: Ghost },
-  { id: "crisis", label: "Crisis Resolution", Icon: HeartCrack },
-  { id: "gwcc", label: "Long-term Community", Icon: Trophy },
-  { id: "results", label: "Result", Icon: BarChart2 },
+  { id: "overview-banner", label: "Overview", Icon: Compass },
+  { id: "research-banner", label: "Research", Icon: Search },
+  { id: "holiday-banner", label: "Holiday Design", Icon: Ghost },
+  { id: "crisis-banner", label: "Crisis Resolution", Icon: HeartCrack },
+  { id: "contest-banner", label: "Long-term Community", Icon: Trophy },
+  { id: "result-banner", label: "Result", Icon: BarChart2 },
   { id: "reflections", label: "Reflections", Icon: Sparkles },
 ];
 
